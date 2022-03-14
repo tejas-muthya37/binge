@@ -1,0 +1,14 @@
+.movie-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.movie-card-footer .footer-icons-group {
+    display: flex;
+    gap: 1rem;
+}
+
+.movie-card-footer .footer-icons-group>* {
+    cursor: pointer;
+}

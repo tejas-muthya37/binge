@@ -1,0 +1,17 @@
+.Movies {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.group-movies {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 4rem;
+}
+
+.movie-group h1 {
+    text-align: left;
+    margin-bottom: 2rem;
+}
