@@ -1,0 +1,34 @@
+.Navbar {
+    padding: 1rem;
+}
+
+.Navbar nav {
+    display: flex;
+    height: 2rem;
+    align-items: center;
+}
+
+.Navbar .nav-right {
+    margin-left: auto;
+}
+
+.Navbar .nav-right ul {
+    display: flex;
+    list-style-type: none;
+    gap: 2rem;
+}
+
+.Navbar .nav-right ul li {
+    cursor: pointer;
+}
+
+.Navbar .nav-logo {
+    color: var(--binge-red);
+    display: flex;
+    align-items: center;
+    height: 2rem;
+}
+
+.Navbar .nav-logo h1 {
+    margin-left: 0.5rem;
+}
