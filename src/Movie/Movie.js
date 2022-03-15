@@ -3,13 +3,13 @@ import { BigPlayButton, Player } from "video-react";
 import WatchLaterIcon from "@mui/icons-material/WatchLater";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
-import { drishyamThumbnail } from "./../images.js";
+import { thrillerThumbnailOne } from "./../images.js";
 
 const Movie = (props) => {
   return (
     <div className="Movie">
       <Player
-        poster={drishyamThumbnail}
+        poster={thrillerThumbnailOne}
         src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4"
       >
         <BigPlayButton position="center" />
