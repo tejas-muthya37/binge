@@ -30,32 +30,21 @@
     color: whitesmoke;
 }
 
-.Navbar .nav-logo {
+.Navbar .nav-logo>* {
     color: var(--binge-red);
     display: flex;
     height: 2rem;
     align-items: center;
+    text-decoration: none;
 }
 
 .Navbar .nav-logo h1 {
-    margin-left: 0.5rem;
+    margin: 0 0 0 0.5rem;
 }
 
 .Navbar .nav-right ul.ul-mobile-view {
     display: none;
 }
-
-/* .Navbar button.btn-log-out {
-    background-color: var(--binge-red);
-    border: none;
-    height: 2.25rem;
-    width: 6rem;
-    border-radius: 2px;
-    color: whitesmoke;
-    font-size: 1.2rem;
-    cursor: pointer;
-    margin: 1rem 0;
-} */
 
 @media screen and (max-width: 400px) {
     .Navbar .nav-right ul.ul-laptop-view {

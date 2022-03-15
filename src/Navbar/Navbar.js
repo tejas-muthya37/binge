@@ -12,8 +12,10 @@ const Navbar = () => {
       <nav>
         <div className="nav-left">
           <div className="nav-logo">
-            <LiveTvIcon />
-            <h1>Binge</h1>
+            <Link to="/">
+              <LiveTvIcon />
+              <h1>Binge</h1>
+            </Link>
           </div>
         </div>
         <div className="nav-right">

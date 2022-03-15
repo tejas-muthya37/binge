@@ -1,5 +1,4 @@
 import "./playlists.css";
-import Movie from "./../Movie/Movie";
 
 const Playlists = () => {
   return (
