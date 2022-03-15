@@ -15,3 +15,32 @@
     text-align: left;
     margin-bottom: 2rem;
 }
+
+
+@media screen and (max-width: 1100px) {
+    .group-movies {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 4rem;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .group-movies {
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 4rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .Movies {
+        padding: 2rem 1rem;
+    }
+
+    .group-movies {
+        grid-gap: 2rem;
+    }
+
+    .movie-group h1 {
+        font-size: 1.5rem;
+    }
+}

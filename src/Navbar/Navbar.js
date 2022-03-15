@@ -16,7 +16,7 @@ const Navbar = () => {
           </div>
         </div>
         <div className="nav-right">
-          <ul>
+          <ul className="ul-laptop-view">
             <li>
               <ThumbUpIcon />
             </li>
@@ -28,6 +28,21 @@ const Navbar = () => {
             </li>
             <li>
               <HistoryIcon />
+            </li>
+          </ul>
+
+          <ul className="ul-mobile-view">
+            <li>
+              <ThumbUpIcon fontSize="small" />
+            </li>
+            <li>
+              <SubscriptionsIcon fontSize="small" />
+            </li>
+            <li>
+              <WatchLaterIcon fontSize="small" />
+            </li>
+            <li>
+              <HistoryIcon fontSize="small" />
             </li>
           </ul>
         </div>

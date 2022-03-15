@@ -4,8 +4,8 @@
 
 .Navbar nav {
     display: flex;
-    height: 2rem;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .Navbar .nav-right {
@@ -16,19 +16,37 @@
     display: flex;
     list-style-type: none;
     gap: 2rem;
+    padding: 0;
 }
 
 .Navbar .nav-right ul li {
     cursor: pointer;
+    display: flex;
+    align-items: center;
 }
 
 .Navbar .nav-logo {
     color: var(--binge-red);
     display: flex;
-    align-items: center;
     height: 2rem;
+    align-items: center;
 }
 
 .Navbar .nav-logo h1 {
     margin-left: 0.5rem;
+}
+
+.Navbar .nav-right ul.ul-mobile-view {
+    display: none;
+}
+
+@media screen and (max-width: 400px) {
+    .Navbar .nav-right ul.ul-laptop-view {
+        display: none;
+    }
+
+    .Navbar .nav-right ul.ul-mobile-view {
+        display: flex;
+        gap: 1.5rem;
+    }
 }

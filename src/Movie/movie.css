@@ -1,6 +1,6 @@
 .movie-card-footer {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
 }
 
@@ -11,4 +11,10 @@
 
 .movie-card-footer .footer-icons-group>* {
     cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+    .movie-card-footer h3 {
+        font-size: 1rem;
+    }
 }
