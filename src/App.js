@@ -8,6 +8,7 @@ import WatchLater from "./WatchLater/WatchLater";
 import History from "./History/History";
 import Playlists from "./Playlists/Playlists";
 import Playlist from "./Playlist/Playlist";
+import Authenticate from "./Authenticate/Authenticate";
 
 function App() {
   return (
@@ -47,6 +48,22 @@ function App() {
           <Route exact path="/playlist">
             <Navbar />
             <Playlist />
+          </Route>
+
+          <Route exact path="/login">
+            <Authenticate
+              cardTitle="LOGIN"
+              checkboxLabel="Remember me"
+              alternate="Create New Account"
+            />
+          </Route>
+
+          <Route exact path="/signup">
+            <Authenticate
+              cardTitle="SIGN UP"
+              checkboxLabel="I agree to the terms and conditions"
+              alternate="Login With Existing Account"
+            />
           </Route>
         </Switch>
       </div>

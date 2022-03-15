@@ -15,7 +15,7 @@ const Movie = (props) => {
         <BigPlayButton position="center" />
       </Player>
       <div className="movie-card-footer">
-        <h3 className="movie-title">{props.title}</h3>
+        <p className="movie-title">{props.title}</p>
         <div className="footer-icons-group">
           <ThumbUpIcon fontSize="small" />
           <ThumbDownIcon fontSize="small" />

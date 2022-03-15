@@ -14,7 +14,7 @@
 }
 
 @media screen and (max-width: 600px) {
-    .movie-card-footer h3 {
+    .movie-card-footer p {
         font-size: 1rem;
     }
 }

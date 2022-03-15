@@ -1,0 +1,86 @@
+.landing-card {
+    margin: 8rem auto 0 auto;
+    width: 20rem;
+    background-color: whitesmoke;
+    padding: 1.5rem;
+    border-radius: 2px;
+    color: var(--binge-grey);
+}
+
+.landing-card a {
+    text-decoration: none;
+    color: var(--binge-grey);
+}
+
+.landing-card>* {
+    margin: auto;
+}
+
+.landing-card h1 {
+    text-align: center;
+    font-size: 1.75rem;
+    color: var(--binge-grey);
+    font-family: var(--secondary-font);
+}
+
+.landing-inputs {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem 0 0.75rem 0;
+}
+
+.landing-inputs .label-with-input {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.25rem;
+}
+
+.landing-inputs label {
+    margin-bottom: 5px;
+    color: #888888;
+    text-align: left;
+}
+
+.landing-inputs input {
+    height: 25px;
+    background-color: whitesmoke;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid var(--binge-red)
+}
+
+.secondary-cta-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.secondary-cta-section label {
+    margin-left: 8px;
+}
+
+.secondary-cta-section a {
+    font-size: 0.9rem;
+}
+
+.secondary-cta-checkbox {
+    display: flex;
+    align-items: center;
+}
+
+.landing-card button {
+    border: none;
+    height: 45px;
+    width: 100%;
+    border-radius: 2px;
+    color: whitesmoke;
+    background-color: var(--binge-red);
+    font-size: 1.1rem;
+    margin: 2rem 0;
+    cursor: pointer;
+}
+
+.alternate-cta {
+    text-align: center;
+    font-size: 1rem;
+}
