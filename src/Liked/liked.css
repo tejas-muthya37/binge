@@ -1,0 +1,28 @@
+.Liked {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.liked-videos-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 4rem;
+}
+
+.liked-videos-section>* {
+    width: 17.5rem;
+}
+
+.Liked h1 {
+    text-align: left;
+}
+
+@media screen and (max-width: 600px) {
+    .Liked h1 {
+        font-size: 1.5rem;
+    }
+
+}

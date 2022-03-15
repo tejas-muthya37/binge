@@ -4,6 +4,7 @@ import WatchLaterIcon from "@mui/icons-material/WatchLater";
 import HistoryIcon from "@mui/icons-material/History";
 import LiveTvIcon from "@mui/icons-material/LiveTv";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -18,31 +19,47 @@ const Navbar = () => {
         <div className="nav-right">
           <ul className="ul-laptop-view">
             <li>
-              <ThumbUpIcon />
+              <Link to="/liked">
+                <ThumbUpIcon />
+              </Link>
             </li>
             <li>
-              <SubscriptionsIcon />
+              <Link to="/playlists">
+                <SubscriptionsIcon />
+              </Link>
             </li>
             <li>
-              <WatchLaterIcon />
+              <Link to="/watch-later">
+                <WatchLaterIcon />
+              </Link>
             </li>
             <li>
-              <HistoryIcon />
+              <Link to="/history">
+                <HistoryIcon />
+              </Link>
             </li>
           </ul>
 
           <ul className="ul-mobile-view">
             <li>
-              <ThumbUpIcon fontSize="small" />
+              <Link to="/liked">
+                <ThumbUpIcon fontSize="small" />
+              </Link>
             </li>
             <li>
-              <SubscriptionsIcon fontSize="small" />
+              <Link to="/playlists">
+                <SubscriptionsIcon fontSize="small" />
+              </Link>
             </li>
             <li>
-              <WatchLaterIcon fontSize="small" />
+              <Link to="/watch-later">
+                <WatchLaterIcon fontSize="small" />
+              </Link>
             </li>
             <li>
-              <HistoryIcon fontSize="small" />
+              <Link to="/history">
+                <HistoryIcon fontSize="small" />
+              </Link>
             </li>
           </ul>
         </div>

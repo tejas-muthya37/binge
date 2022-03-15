@@ -1,0 +1,27 @@
+.Playlists {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.playlists-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 4rem;
+}
+
+.playlists-section>* {
+    width: 17.5rem;
+}
+
+.Playlists h1 {
+    text-align: left;
+}
+
+@media screen and (max-width: 600px) {
+    .Playlists h1 {
+        font-size: 1.5rem;
+    }
+}

@@ -26,6 +26,10 @@
     align-items: center;
 }
 
+.Navbar .nav-right ul li>* {
+    color: whitesmoke;
+}
+
 .Navbar .nav-logo {
     color: var(--binge-red);
     display: flex;
