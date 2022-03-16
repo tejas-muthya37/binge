@@ -3,23 +3,19 @@ import { BigPlayButton, Player } from "video-react";
 import WatchLaterIcon from "@mui/icons-material/WatchLater";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
-import { thrillerThumbnailOne } from "./../images.js";
 
 const Movie = (props) => {
   return (
     <div className="Movie">
-      <Player
-        poster={thrillerThumbnailOne}
-        src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4"
-      >
+      <Player poster={props.thumbnail} src={props.source}>
         <BigPlayButton position="center" />
       </Player>
       <div className="movie-card-footer">
         <p className="movie-title">{props.title}</p>
         <div className="footer-icons-group">
-          <ThumbUpIcon fontSize="small" />
-          <ThumbDownIcon fontSize="small" />
-          <WatchLaterIcon fontSize="small" />
+          <ThumbUpIcon onClick={props.addToLiked} fontSize="small" />
+          <ThumbDownIcon onClick={props.removeFromLiked} fontSize="small" />
+          <WatchLaterIcon onClick={props.addToWatchLater} fontSize="small" />
         </div>
       </div>
     </div>
