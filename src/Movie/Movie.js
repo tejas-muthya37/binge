@@ -7,9 +7,11 @@ import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 const Movie = (props) => {
   return (
     <div className="Movie">
-      <Player poster={props.thumbnail} src={props.source}>
-        <BigPlayButton onClick={props.addToHistory} position="center" />
-      </Player>
+      <div onClick={props.addToHistory}>
+        <Player poster={props.thumbnail} src={props.source}>
+          <BigPlayButton position="center" />
+        </Player>
+      </div>
       <div className="movie-card-footer">
         <p className="movie-title">{props.title}</p>
         <div className="footer-icons-group">

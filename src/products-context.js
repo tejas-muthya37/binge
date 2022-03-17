@@ -50,6 +50,11 @@ const reducer = (state, action) => {
         ...state,
         historyArray: [...state.historyArray, action.payload],
       };
+    case "Clear History":
+      return {
+        ...state,
+        historyArray: [],
+      };
     default:
       return state;
   }

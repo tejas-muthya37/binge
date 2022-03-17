@@ -12,15 +12,18 @@ const History = () => {
       "WATCH_LATER_ARRAY",
       JSON.stringify(state.watchLaterArray)
     );
-  }, [state.likedArray, state.watchLaterArray]);
+    localStorage.setItem("HISTORY_ARRAY", JSON.stringify(state.historyArray));
+  }, [state.likedArray, state.watchLaterArray, state.historyArray]);
+
   return (
     <div className="History">
       <h1>History</h1>
+      <p onClick={() => dispatch({ type: "Clear History" })}>Clear History</p>
       <div className="history-section">
-        {state.historyArray.map((movie) => {
+        {state.historyArray.map((movie, index) => {
           return (
             <Movie
-              key={movie.id}
+              key={index}
               source={movie.source}
               thumbnail={movie.thumbnail}
               title={movie.title}
@@ -33,9 +36,6 @@ const History = () => {
               }
               addToWatchLater={() =>
                 dispatch({ type: "Add to Watch Later", payload: movie })
-              }
-              addToHistory={() =>
-                dispatch({ type: "Add to History", payload: movie })
               }
             />
           );
