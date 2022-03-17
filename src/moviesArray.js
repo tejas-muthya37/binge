@@ -1,6 +1,6 @@
 import { thrillerThumbnailOne } from "./images.js";
 
-export const moviesArray = [
+const moviesArray = [
   {
     id: 1,
     thumbnail: thrillerThumbnailOne,
@@ -114,3 +114,5 @@ export const moviesArray = [
     category: "Drama",
   },
 ];
+
+export default moviesArray;

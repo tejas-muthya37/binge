@@ -5,16 +5,24 @@ const ProductsContext = createContext(null);
 const reducer = (state, action) => {
   switch (action.type) {
     case "Add to Liked":
-      console.log("Added to Liked");
-      break;
+      return {
+        ...state,
+        likedArray: [...state.likedArray, action.payload],
+      };
     case "Remove from Liked":
-      console.log("Removed from Liked");
-      break;
+      return {
+        ...state,
+        likedArray: state.likedArray.filter(
+          (movie) => movie.id !== action.payload.id
+        ),
+      };
     case "Add to Watch Later":
-      console.log("Added to Watch Later");
-      break;
+      return {
+        ...state,
+        watchLaterArray: [...state.watchLaterArray, action.payload],
+      };
     default:
-      console.log("default");
+      return state;
   }
 };
 
