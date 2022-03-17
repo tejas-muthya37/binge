@@ -1,9 +1,18 @@
 import "./history.css";
 import Movie from "./../Movie/Movie";
 import { useProducts } from "../products-context";
+import { useEffect } from "react";
 
 const History = () => {
   const { state, dispatch } = useProducts();
+
+  useEffect(() => {
+    localStorage.setItem("LIKED_ARRAY", JSON.stringify(state.likedArray));
+    localStorage.setItem(
+      "WATCH_LATER_ARRAY",
+      JSON.stringify(state.watchLaterArray)
+    );
+  }, [state.likedArray, state.watchLaterArray]);
   return (
     <div className="History">
       <h1>History</h1>
