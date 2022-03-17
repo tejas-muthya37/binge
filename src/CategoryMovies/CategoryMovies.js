@@ -27,6 +27,7 @@ const CategoryMovies = ({ title, category }) => {
                 source={movie.source}
                 thumbnail={movie.thumbnail}
                 title={movie.title}
+                notLikedPage={true}
                 addToLiked={() =>
                   dispatch({ type: "Add to Liked", payload: movie })
                 }

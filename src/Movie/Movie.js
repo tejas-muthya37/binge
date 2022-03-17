@@ -13,7 +13,9 @@ const Movie = (props) => {
       <div className="movie-card-footer">
         <p className="movie-title">{props.title}</p>
         <div className="footer-icons-group">
-          <ThumbUpIcon onClick={props.addToLiked} fontSize="small" />
+          {props.notLikedPage && (
+            <ThumbUpIcon onClick={props.addToLiked} fontSize="small" />
+          )}
           <ThumbDownIcon onClick={props.removeFromLiked} fontSize="small" />
           <WatchLaterIcon onClick={props.addToWatchLater} fontSize="small" />
         </div>
