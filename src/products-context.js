@@ -46,10 +46,18 @@ const reducer = (state, action) => {
         };
       }
     case "Add to History":
-      return {
-        ...state,
-        historyArray: [...state.historyArray, action.payload],
-      };
+      if (
+        state.historyArray.length === 0 ||
+        state.historyArray[state.historyArray.length - 1].id !==
+          action.payload.id
+      ) {
+        return {
+          ...state,
+          historyArray: [...state.historyArray, action.payload],
+        };
+      } else {
+        return state;
+      }
     case "Clear History":
       return {
         ...state,
