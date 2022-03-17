@@ -5,10 +5,22 @@ const ProductsContext = createContext(null);
 const reducer = (state, action) => {
   switch (action.type) {
     case "Add to Liked":
-      return {
-        ...state,
-        likedArray: [...state.likedArray, action.payload],
-      };
+      const likedVideoFound = state.likedArray.find(
+        (video) => video.id === action.payload.id
+      );
+      if (likedVideoFound) {
+        return {
+          ...state,
+          likedArray: state.likedArray.filter(
+            (movie) => movie.id !== action.payload.id
+          ),
+        };
+      } else {
+        return {
+          ...state,
+          likedArray: [...state.likedArray, action.payload],
+        };
+      }
     case "Remove from Liked":
       return {
         ...state,
@@ -17,10 +29,22 @@ const reducer = (state, action) => {
         ),
       };
     case "Add to Watch Later":
-      return {
-        ...state,
-        watchLaterArray: [...state.watchLaterArray, action.payload],
-      };
+      const watchLaterVideoFound = state.watchLaterArray.find(
+        (video) => video.id === action.payload.id
+      );
+      if (watchLaterVideoFound) {
+        return {
+          ...state,
+          watchLaterArray: state.watchLaterArray.filter(
+            (movie) => movie.id !== action.payload.id
+          ),
+        };
+      } else {
+        return {
+          ...state,
+          watchLaterArray: [...state.watchLaterArray, action.payload],
+        };
+      }
     default:
       return state;
   }
