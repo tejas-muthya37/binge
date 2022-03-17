@@ -31,6 +31,9 @@ const Liked = () => {
               addToWatchLater={() =>
                 dispatch({ type: "Add to Watch Later", payload: movie })
               }
+              addToHistory={() =>
+                dispatch({ type: "Add to History", payload: movie })
+              }
             />
           );
         })}

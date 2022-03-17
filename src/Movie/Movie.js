@@ -8,7 +8,7 @@ const Movie = (props) => {
   return (
     <div className="Movie">
       <Player poster={props.thumbnail} src={props.source}>
-        <BigPlayButton position="center" />
+        <BigPlayButton onClick={props.addToHistory} position="center" />
       </Player>
       <div className="movie-card-footer">
         <p className="movie-title">{props.title}</p>

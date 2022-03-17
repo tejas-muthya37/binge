@@ -45,6 +45,11 @@ const reducer = (state, action) => {
           watchLaterArray: [...state.watchLaterArray, action.payload],
         };
       }
+    case "Add to History":
+      return {
+        ...state,
+        historyArray: [...state.historyArray, action.payload],
+      };
     default:
       return state;
   }
@@ -61,9 +66,14 @@ const ProductsProvider = ({ children }) => {
 
   if (watchLaterVideosArray === null) watchLaterVideosArray = [];
 
+  var historyVideosArray = JSON.parse(localStorage.getItem("HISTORY_ARRAY"));
+
+  if (historyVideosArray === null) historyVideosArray = [];
+
   const [state, dispatch] = useReducer(reducer, {
     likedArray: likedVideosArray,
     watchLaterArray: watchLaterVideosArray,
+    historyArray: historyVideosArray,
   });
   return (
     <ProductsContext.Provider value={{ state, dispatch }}>
