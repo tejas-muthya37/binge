@@ -12,7 +12,9 @@ const Liked = () => {
       "WATCH_LATER_ARRAY",
       JSON.stringify(state.watchLaterArray)
     );
-  }, [state.likedArray, state.watchLaterArray]);
+    localStorage.setItem("HISTORY_ARRAY", JSON.stringify(state.historyArray));
+  }, [state.likedArray, state.watchLaterArray, state.historyArray]);
+
   return (
     <div className="Liked">
       <h1>Liked videos</h1>
@@ -30,6 +32,9 @@ const Liked = () => {
               }
               addToWatchLater={() =>
                 dispatch({ type: "Add to Watch Later", payload: movie })
+              }
+              addToHistory={() =>
+                dispatch({ type: "Add to History", payload: movie })
               }
             />
           );

@@ -12,7 +12,9 @@ const WatchLater = () => {
       "WATCH_LATER_ARRAY",
       JSON.stringify(state.watchLaterArray)
     );
-  }, [state.likedArray, state.watchLaterArray]);
+    localStorage.setItem("HISTORY_ARRAY", JSON.stringify(state.historyArray));
+  }, [state.likedArray, state.watchLaterArray, state.historyArray]);
+
   return (
     <div className="WatchLater">
       <h1>Watch later</h1>
@@ -33,6 +35,9 @@ const WatchLater = () => {
               }
               addToWatchLater={() =>
                 dispatch({ type: "Add to Watch Later", payload: movie })
+              }
+              addToHistory={() =>
+                dispatch({ type: "Add to History", payload: movie })
               }
             />
           );

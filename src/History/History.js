@@ -17,8 +17,15 @@ const History = () => {
 
   return (
     <div className="History">
-      <h1>History</h1>
-      <p onClick={() => dispatch({ type: "Clear History" })}>Clear History</p>
+      <div class="history-header">
+        <h1>History</h1>
+        {state.historyArray.length > 0 && (
+          <button onClick={() => dispatch({ type: "Clear History" })}>
+            Clear History
+          </button>
+        )}
+      </div>
+
       <div className="history-section">
         {state.historyArray.map((movie, index) => {
           return (
