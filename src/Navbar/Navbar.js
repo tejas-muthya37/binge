@@ -11,12 +11,9 @@ const Navbar = () => {
     <div className="Navbar">
       <nav>
         <div className="nav-left">
-          <div className="nav-logo">
-            <Link to="/">
-              <LiveTvIcon />
-              <h1>Binge</h1>
-            </Link>
-          </div>
+          <Link to="/">
+            <h1>BINGE</h1>
+          </Link>
         </div>
         <div className="nav-right">
           <ul className="ul-laptop-view">
@@ -66,6 +63,7 @@ const Navbar = () => {
           </ul>
         </div>
       </nav>{" "}
+      <button>Log out</button>
     </div>
   );
 };

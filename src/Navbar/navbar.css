@@ -1,5 +1,7 @@
 .Navbar {
-    padding: 1rem;
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
 }
 
 .Navbar nav {
@@ -30,16 +32,24 @@
     color: whitesmoke;
 }
 
-.Navbar .nav-logo>* {
+.Navbar .nav-left>* {
     color: var(--binge-red);
-    display: flex;
-    height: 2rem;
-    align-items: center;
     text-decoration: none;
+    font-family: var(--secondary-font);
+    letter-spacing: 1px;
+    font-size: 1.25rem;
 }
 
-.Navbar .nav-logo h1 {
-    margin: 0 0 0 0.5rem;
+.Navbar button {
+    border: none;
+    height: 2.5rem;
+    width: 6.5rem;
+    border-radius: 2px;
+    color: whitesmoke;
+    background-color: var(--binge-red);
+    font-size: 1.25rem;
+    margin: 1rem 0 0 auto;
+    cursor: pointer;
 }
 
 .Navbar .nav-right ul.ul-mobile-view {
@@ -54,5 +64,15 @@
     .Navbar .nav-right ul.ul-mobile-view {
         display: flex;
         gap: 1.5rem;
+    }
+
+    .Navbar .nav-left>* {
+        font-size: 1.1rem;
+    }
+
+    .Navbar button {
+        height: 2rem;
+        width: 5rem;
+        font-size: 1rem;
     }
 }
