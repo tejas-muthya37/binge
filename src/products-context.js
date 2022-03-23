@@ -58,6 +58,13 @@ const reducer = (state, action) => {
       } else {
         return state;
       }
+    case "Remove from History":
+      return {
+        ...state,
+        historyArray: state.historyArray.filter(
+          (movie) => movie.id !== action.payload.id
+        ),
+      };
     case "Clear History":
       return {
         ...state,

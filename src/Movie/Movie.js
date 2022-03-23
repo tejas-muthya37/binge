@@ -3,6 +3,7 @@ import { BigPlayButton, Player } from "video-react";
 import WatchLaterIcon from "@mui/icons-material/WatchLater";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const Movie = (props) => {
   return (
@@ -20,6 +21,9 @@ const Movie = (props) => {
           )}
           <ThumbDownIcon onClick={props.removeFromLiked} fontSize="small" />
           <WatchLaterIcon onClick={props.addToWatchLater} fontSize="small" />
+          {props.historyPage && (
+            <DeleteIcon onClick={props.removeFromHistory} fontSize="small" />
+          )}
         </div>
       </div>
     </div>

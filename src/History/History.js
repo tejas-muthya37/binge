@@ -35,6 +35,7 @@ const History = () => {
               thumbnail={movie.thumbnail}
               title={movie.title}
               notLikedPage={true}
+              historyPage={true}
               addToLiked={() =>
                 dispatch({ type: "Add to Liked", payload: movie })
               }
@@ -43,6 +44,9 @@ const History = () => {
               }
               addToWatchLater={() =>
                 dispatch({ type: "Add to Watch Later", payload: movie })
+              }
+              removeFromHistory={() =>
+                dispatch({ type: "Remove from History", payload: movie })
               }
             />
           );
