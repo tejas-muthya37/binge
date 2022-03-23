@@ -1,0 +1,29 @@
+.PlaylistThumbnail {
+    width: 20rem;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.thumbnail-container h2,
+.thumbnail-container p {
+    margin: 0;
+}
+
+.thumbnail-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    border: 1px solid var(--binge-red);
+}
+
+.thumbnail-left {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    text-align: left;
+}
+
+.thumbnail-right>* {
+    cursor: pointer;
+}
