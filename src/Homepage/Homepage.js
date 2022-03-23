@@ -37,7 +37,7 @@ const Homepage = () => {
         </Link>
       </div>
       <Link to="/movies">
-        <button>Browse All Categories</button>
+        <button>Watch Now</button>
       </Link>
     </div>
   );

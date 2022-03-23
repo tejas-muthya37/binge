@@ -4,6 +4,7 @@ import WatchLaterIcon from "@mui/icons-material/WatchLater";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import DeleteIcon from "@mui/icons-material/Delete";
+import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 
 const Movie = (props) => {
   return (
@@ -24,6 +25,7 @@ const Movie = (props) => {
           {props.historyPage && (
             <DeleteIcon onClick={props.removeFromHistory} fontSize="small" />
           )}
+          <PlaylistAddIcon />
         </div>
       </div>
     </div>
