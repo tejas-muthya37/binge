@@ -8,6 +8,11 @@
 .thumbnail-container h2,
 .thumbnail-container p {
     margin: 0;
+    padding: 0.5rem;
+}
+
+.thumbnail-container h2 {
+    cursor: pointer;
 }
 
 .thumbnail-container {
@@ -24,6 +29,13 @@
     text-align: left;
 }
 
+
+.thumbnail-left>* {
+    text-decoration: none;
+    color: whitesmoke;
+}
+
 .thumbnail-right>* {
     cursor: pointer;
+    padding: 0.5rem;
 }

@@ -34,7 +34,6 @@ const History = () => {
               source={movie.source}
               thumbnail={movie.thumbnail}
               title={movie.title}
-              notLikedPage={true}
               historyPage={true}
               addToLiked={() =>
                 dispatch({ type: "Add to Liked", payload: movie })

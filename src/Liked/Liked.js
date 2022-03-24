@@ -26,7 +26,7 @@ const Liked = () => {
               source={movie.source}
               thumbnail={movie.thumbnail}
               title={movie.title}
-              notLikedPage={false}
+              likedPage={true}
               removeFromLiked={() =>
                 dispatch({ type: "Remove from Liked", payload: movie })
               }

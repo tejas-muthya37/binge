@@ -4,7 +4,6 @@ import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import { useState, useRef, useEffect } from "react";
 import { useProducts } from "./../products-context";
-import uuid from "react-uuid";
 
 const Playlists = () => {
   const inputRef = useRef(null);
@@ -46,6 +45,7 @@ const Playlists = () => {
         {state.playlistsArray.map((playlist) => {
           return (
             <PlaylistThumbnail
+              playlistId={playlist.id}
               title={playlist.name}
               length={playlist.videos.length}
               removePlaylist={() =>
@@ -76,7 +76,7 @@ const Playlists = () => {
               dispatch({
                 type: "Add Playlist",
                 payload: {
-                  id: uuid(),
+                  id: state.playlistsArray.length + 1,
                   name: inputRef.current.value,
                   videos: [],
                 },

@@ -48,7 +48,7 @@ const Movie = (props) => {
       <div className="movie-card-footer">
         <p className="movie-title">{props.title}</p>
         <div className="footer-icons-group">
-          {props.notLikedPage && (
+          {!props.likedPage && (
             <ThumbUpIcon onClick={props.addToLiked} fontSize="small" />
           )}
           <ThumbDownIcon onClick={props.removeFromLiked} fontSize="small" />
@@ -56,7 +56,12 @@ const Movie = (props) => {
           {props.historyPage && (
             <DeleteIcon onClick={props.removeFromHistory} fontSize="small" />
           )}
-          <PlaylistAddIcon onClick={handleOpen} />
+          {props.playlistPage && (
+            <DeleteIcon onClick={props.removeFromPlaylist} fontSize="small" />
+          )}
+          {!props.playlistPage && !props.historyPage && (
+            <PlaylistAddIcon onClick={handleOpen} />
+          )}
           <Modal
             open={open}
             onClose={handleClose}
