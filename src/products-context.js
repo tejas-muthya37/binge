@@ -93,6 +93,19 @@ const reducer = (state, action) => {
         ...state,
         playlistsArray: state.playlistsArray,
       };
+    case "Remove from Playlist":
+      state.playlistsArray.map((playlist) => {
+        if (playlist.id === action.payload.playlistId) {
+          playlist.videos.filter(
+            (video) => video.id !== action.payload.videoId
+          );
+        }
+        return true;
+      });
+      return {
+        ...state,
+        playlistsArray: state.playlistsArray,
+      };
     default:
       return state;
   }

@@ -1,16 +1,19 @@
-.playlist-section {
-    padding: 2rem 4rem;
+.Playlist {
     display: flex;
     flex-direction: column;
+    padding: 2rem 4rem;
     gap: 3rem;
 }
 
-.playlist-section>* {
+.playlist-section {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 4rem;
 }
 
-.playlist-section>*>* {
+
+.playlist-section>* {
     width: 17.5rem;
 }
 

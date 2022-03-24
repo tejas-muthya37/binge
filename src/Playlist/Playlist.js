@@ -2,22 +2,34 @@ import "./playlist.css";
 import Movie from "./../Movie/Movie";
 import { useParams } from "react-router";
 import { useProducts } from "./../products-context";
+import { useEffect } from "react";
 
 const Playlist = () => {
   const { playlistId } = useParams();
 
   const { state, dispatch } = useProducts();
 
+  const playlist = state.playlistsArray.find(
+    (playlist) => playlist.id === Number(playlistId)
+  );
+
+  useEffect(() => {
+    localStorage.setItem(
+      "PLAYLISTS_ARRAY",
+      JSON.stringify(state.playlistsArray)
+    );
+  }, [state]);
+
   return (
     <div className="Playlist">
-      {state.playlistsArray.map((playlist) => {
-        return (
-          <>
-            {Number(playlistId) === playlist.id &&
-              playlist.videos.map((movie) => {
-                return (
-                  <div key={movie.id} className="playlist-section">
-                    <h1>{playlist.name}</h1>
+      <h1>{playlist.name}</h1>
+      <div className="playlist-section">
+        {state.playlistsArray.map((playlist) => {
+          return (
+            <>
+              {Number(playlistId) === playlist.id &&
+                playlist.videos.map((movie) => {
+                  return (
                     <Movie
                       id={movie.id}
                       source={movie.source}
@@ -37,13 +49,22 @@ const Playlist = () => {
                       addToHistory={() =>
                         dispatch({ type: "Add to History", payload: movie })
                       }
+                      removeFromPlaylist={() =>
+                        dispatch({
+                          type: "Remove from Playlist",
+                          payload: {
+                            playlistId: playlist.id,
+                            videoId: movie.id,
+                          },
+                        })
+                      }
                     />
-                  </div>
-                );
-              })}
-          </>
-        );
-      })}
+                  );
+                })}
+            </>
+          );
+        })}
+      </div>
     </div>
   );
 };

@@ -45,6 +45,7 @@ const Playlists = () => {
         {state.playlistsArray.map((playlist) => {
           return (
             <PlaylistThumbnail
+              key={playlist.id}
               playlistId={playlist.id}
               title={playlist.name}
               length={playlist.videos.length}
