@@ -75,6 +75,13 @@ const reducer = (state, action) => {
         ...state,
         playlistsArray: [...state.playlistsArray, action.payload],
       };
+    case "Remove Playlist":
+      return {
+        ...state,
+        playlistsArray: state.playlistsArray.filter(
+          (playlist) => playlist.id !== action.payload
+        ),
+      };
     default:
       return state;
   }
@@ -95,7 +102,9 @@ const ProductsProvider = ({ children }) => {
 
   if (historyVideosArray === null) historyVideosArray = [];
 
-  var playlistsVideosArray = JSON.parse(localStorage.getItem("HISTORY_ARRAY"));
+  var playlistsVideosArray = JSON.parse(
+    localStorage.getItem("PLAYLISTS_ARRAY")
+  );
 
   if (playlistsVideosArray === null) playlistsVideosArray = [];
 

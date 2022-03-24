@@ -2,10 +2,21 @@ import "./playlists.css";
 import PlaylistThumbnail from "../PlaylistThumbnail/PlaylistThumbnail";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
+import { useProducts } from "./../products-context";
+import uuid from "react-uuid";
 
 const Playlists = () => {
   const inputRef = useRef(null);
+
+  const { state, dispatch } = useProducts();
+
+  useEffect(() => {
+    localStorage.setItem(
+      "PLAYLISTS_ARRAY",
+      JSON.stringify(state.playlistsArray)
+    );
+  }, [state.playlistsArray]);
 
   const style = {
     position: "absolute",
@@ -47,12 +58,17 @@ const Playlists = () => {
         <h3 onClick={handleOpen}>+ ADD A NEW PLAYLIST</h3>
       </div>
       <div className="playlists-section">
-        <PlaylistThumbnail />
-        <PlaylistThumbnail />
-        <PlaylistThumbnail />
-        <PlaylistThumbnail />
-        <PlaylistThumbnail />
-        <PlaylistThumbnail />
+        {state.playlistsArray.map((playlist) => {
+          return (
+            <PlaylistThumbnail
+              title={playlist.name}
+              length={playlist.videos.length}
+              removePlaylist={() =>
+                dispatch({ type: "Remove Playlist", payload: playlist.id })
+              }
+            />
+          );
+        })}
       </div>
       <Modal
         open={open}
@@ -75,7 +91,22 @@ const Playlists = () => {
               placeholder="Playlist Name"
             />
           </form>
-          <button style={buttonStyle}>Add</button>
+          <button
+            onClick={() => {
+              dispatch({
+                type: "Add Playlist",
+                payload: {
+                  id: uuid(),
+                  name: inputRef.current.value,
+                  videos: [],
+                },
+              });
+              handleClose();
+            }}
+            style={buttonStyle}
+          >
+            Add
+          </button>
         </Box>
       </Modal>
     </div>
