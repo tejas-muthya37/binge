@@ -96,7 +96,7 @@ const reducer = (state, action) => {
     case "Remove from Playlist":
       state.playlistsArray.map((playlist) => {
         if (playlist.id === action.payload.playlistId) {
-          playlist.videos.filter(
+          playlist.videos = playlist.videos.filter(
             (video) => video.id !== action.payload.videoId
           );
         }
