@@ -30,21 +30,6 @@ const Playlists = () => {
     color: "black",
     boxShadow: 24,
     p: 4,
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "flex-start",
-    gap: "1rem",
-  };
-
-  const buttonStyle = {
-    border: "none",
-    height: "2rem",
-    width: "4rem",
-    borderRadius: "2px",
-    color: "whitesmoke",
-    backgroundColor: "var(--binge-red)",
-    cursor: "pointer",
-    fontSize: "1rem",
   };
 
   const [open, setOpen] = useState(false);
@@ -71,20 +56,15 @@ const Playlists = () => {
         })}
       </div>
       <Modal
+        className="playlist-modal"
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box className="playlist-modal-box" sx={style}>
           <form>
             <input
-              style={{
-                outline: "none",
-                height: "1.5rem",
-                border: "none",
-                fontSize: "1.1rem",
-              }}
               ref={inputRef}
               id="playlist-name"
               type="text"
@@ -103,7 +83,6 @@ const Playlists = () => {
               });
               handleClose();
             }}
-            style={buttonStyle}
           >
             Add
           </button>

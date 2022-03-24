@@ -14,6 +14,13 @@
     cursor: pointer;
 }
 
+.playlist-name {
+    padding: 0.5rem;
+    width: max-content;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
 @media screen and (max-width: 600px) {
     .movie-card-footer p {
         font-size: 1rem;

@@ -82,6 +82,17 @@ const reducer = (state, action) => {
           (playlist) => playlist.id !== action.payload
         ),
       };
+    case "Add to Playlist":
+      state.playlistsArray.map((playlist) => {
+        if (playlist.id === action.payload.playlistId) {
+          playlist.videos = [...playlist.videos, action.payload.video];
+        }
+        return true;
+      });
+      return {
+        ...state,
+        playlistsArray: state.playlistsArray,
+      };
     default:
       return state;
   }

@@ -25,10 +25,12 @@ const CategoryMovies = ({ title, category }) => {
             movie.category === category && (
               <Movie
                 key={movie.id}
+                id={movie.id}
                 source={movie.source}
                 thumbnail={movie.thumbnail}
                 title={movie.title}
                 notLikedPage={true}
+                category={movie.category}
                 addToLiked={() =>
                   dispatch({ type: "Add to Liked", payload: movie })
                 }

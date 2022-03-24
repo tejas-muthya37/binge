@@ -7,20 +7,29 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useProducts } from "./../products-context";
 
 const Movie = (props) => {
+  const { state, dispatch } = useProducts();
+
+  useEffect(() => {
+    localStorage.setItem(
+      "PLAYLISTS_ARRAY",
+      JSON.stringify(state.playlistsArray)
+    );
+  }, [state]);
+
   const style = {
     position: "absolute",
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "background.paper",
+    width: 225,
+    bgcolor: "whitesmoke",
     border: "none",
     outline: "none",
-    color: "black",
+    color: "var(--binge-grey)",
     boxShadow: 24,
     p: 4,
   };
@@ -55,12 +64,33 @@ const Movie = (props) => {
             aria-describedby="modal-modal-description"
           >
             <Box sx={style}>
-              <Typography id="modal-modal-title" variant="h6" component="h2">
-                Text in a modal
-              </Typography>
-              <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-              </Typography>
+              {state.playlistsArray.map((playlist) => {
+                return (
+                  <h3
+                    key={playlist.id}
+                    onClick={() => {
+                      dispatch({
+                        type: "Add to Playlist",
+                        payload: {
+                          playlistId: playlist.id,
+                          video: {
+                            id: props.id,
+                            thumbnail: props.thumbnail,
+                            source: props.source,
+                            title: props.title,
+                            category: props.category,
+                          },
+                        },
+                      });
+                      handleClose();
+                    }}
+                    className="
+                playlist-name"
+                  >
+                    {playlist.name}
+                  </h3>
+                );
+              })}
             </Box>
           </Modal>
         </div>
