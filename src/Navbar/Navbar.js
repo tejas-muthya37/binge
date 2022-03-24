@@ -2,7 +2,6 @@ import "./navbar.css";
 import SubscriptionsIcon from "@mui/icons-material/Subscriptions";
 import WatchLaterIcon from "@mui/icons-material/WatchLater";
 import HistoryIcon from "@mui/icons-material/History";
-import LiveTvIcon from "@mui/icons-material/LiveTv";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import { Link } from "react-router-dom";
 
@@ -63,7 +62,7 @@ const Navbar = () => {
           </ul>
         </div>
       </nav>{" "}
-      <button>Log out</button>
+      <button>SIGN OUT</button>
     </div>
   );
 };

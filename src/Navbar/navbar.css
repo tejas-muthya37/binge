@@ -42,14 +42,15 @@
 
 .Navbar button {
     border: none;
-    height: 2.5rem;
-    width: 6.5rem;
+    height: 2rem;
+    width: 6rem;
     border-radius: 2px;
     color: whitesmoke;
     background-color: var(--binge-red);
-    font-size: 1.25rem;
-    margin: 1rem 0 0 auto;
+    font-size: 1.15rem;
+    margin-left: auto;
     cursor: pointer;
+    font-family: var(--secondary-font);
 }
 
 .Navbar .nav-right ul.ul-mobile-view {
@@ -71,7 +72,6 @@
     }
 
     .Navbar button {
-        height: 2rem;
         width: 5rem;
         font-size: 1rem;
     }
