@@ -70,6 +70,11 @@ const reducer = (state, action) => {
         ...state,
         historyArray: [],
       };
+    case "Add Playlist":
+      return {
+        ...state,
+        playlistsArray: [...state.playlistsArray, action.payload],
+      };
     default:
       return state;
   }
@@ -90,10 +95,15 @@ const ProductsProvider = ({ children }) => {
 
   if (historyVideosArray === null) historyVideosArray = [];
 
+  var playlistsVideosArray = JSON.parse(localStorage.getItem("HISTORY_ARRAY"));
+
+  if (playlistsVideosArray === null) playlistsVideosArray = [];
+
   const [state, dispatch] = useReducer(reducer, {
     likedArray: likedVideosArray,
     watchLaterArray: watchLaterVideosArray,
     historyArray: historyVideosArray,
+    playlistsArray: playlistsVideosArray,
   });
   return (
     <ProductsContext.Provider value={{ state, dispatch }}>

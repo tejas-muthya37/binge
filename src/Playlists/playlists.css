@@ -8,12 +8,23 @@
 .playlists-section {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
     gap: 4rem;
 }
 
 .playlists-section>* {
     width: 17.5rem;
+}
+
+.playlists-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.playlists-header h3 {
+    color: var(--binge-red);
+    cursor: pointer;
 }
 
 .Playlists h1 {
