@@ -1,13 +1,20 @@
 import "./movies.css";
 import CategoryMovies from "../CategoryMovies/CategoryMovies";
+import { useParams } from "react-router-dom";
 
-const Movies = () => {
+const Movies = (props) => {
+  const { categoryName } = useParams();
+  const categoryArray = ["Thrillers", "Action", "Romance", "Drama"];
   return (
     <div className="Movies">
-      <CategoryMovies title="Thrillers" category="Thriller" />
-      <CategoryMovies title="Action" category="Action" />
-      <CategoryMovies title="Romance" category="Romance" />
-      <CategoryMovies title="Drama" category="Drama" />
+      {props.categoryPage === false &&
+        categoryArray.map((category) => {
+          return <CategoryMovies category={category} />;
+        })}
+
+      {props.categoryPage === true && (
+        <CategoryMovies category={categoryName} />
+      )}
     </div>
   );
 };

@@ -22,7 +22,12 @@ function App() {
 
           <Route exact path="/movies">
             <Navbar />
-            <Movies />
+            <Movies categoryPage={false} />
+          </Route>
+
+          <Route exact path="/movies/:categoryName">
+            <Navbar />
+            <Movies categoryPage={true} />
           </Route>
 
           <Route exact path="/liked">

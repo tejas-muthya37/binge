@@ -4,7 +4,7 @@ import Movie from "../Movie/Movie";
 import { useProducts } from "./../products-context.js";
 import { useEffect } from "react";
 
-const CategoryMovies = ({ title, category }) => {
+const CategoryMovies = ({ category }) => {
   const { state, dispatch } = useProducts();
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const CategoryMovies = ({ title, category }) => {
 
   return (
     <div className="CategoryMovies">
-      <h1>{title}</h1>
+      <h1>{category}</h1>
       <div className="category-movies-section">
         {moviesArray.map((movie) => {
           return (

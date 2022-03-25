@@ -11,25 +11,25 @@ const Homepage = () => {
   return (
     <div className="Homepage">
       <div className="categories-section">
-        <Link to="/movies/thrillers">
+        <Link to="/movies/Thrillers">
           <div id="thriller-category" className="category-card">
             <img src={thrillerCategory} alt="" />
             <p>Thrillers</p>
           </div>
         </Link>
-        <Link to="/movies/action">
+        <Link to="/movies/Action">
           <div id="drama-category" className="category-card">
             <img src={actionCategory} alt="" />
             <p>Action</p>
           </div>
         </Link>
-        <Link to="/movies/romance">
+        <Link to="/movies/Romance">
           <div id="scifi-category" className="category-card">
             <img src={romanceCategory} alt="" />
             <p>Romance</p>
           </div>
         </Link>
-        <Link to="/movies/drama">
+        <Link to="/movies/Drama">
           <div id="romance-category" className="category-card">
             <img src={dramaCategory} alt="" />
             <p>Drama</p>
