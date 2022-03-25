@@ -20,7 +20,7 @@ const WatchLater = () => {
       {state.watchLaterArray.length > 0 && <h1>Watch later</h1>}
       <div className="watch-later-section">
         {state.watchLaterArray.length === 0 && (
-          <h1 className="empty-watch-later">No videos in Watch Later!</h1>
+          <h1 className="empty-watch-later">Nothing to Watch Later!</h1>
         )}
         {state.watchLaterArray.length > 0 &&
           state.watchLaterArray.map((movie) => {
