@@ -12,7 +12,7 @@
     gap: 4rem;
 }
 
-.liked-videos-section>* {
+.liked-videos-section>*:not(h1) {
     width: 17.5rem;
 }
 
@@ -20,9 +20,12 @@
     text-align: left;
 }
 
+.Liked h1.empty-liked {
+    text-align: center;
+}
+
 @media screen and (max-width: 600px) {
     .Liked h1 {
         font-size: 1.5rem;
     }
-
 }

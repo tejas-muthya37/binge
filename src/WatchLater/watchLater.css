@@ -12,12 +12,16 @@
     gap: 4rem;
 }
 
-.watch-later-section>* {
+.watch-later-section>*:not(h1) {
     width: 17.5rem;
 }
 
 .WatchLater h1 {
     text-align: left;
+}
+
+.WatchLater h1.empty-watch-later {
+    text-align: center;
 }
 
 @media screen and (max-width: 600px) {

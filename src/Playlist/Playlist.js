@@ -22,12 +22,16 @@ const Playlist = () => {
 
   return (
     <div className="Playlist">
-      <h1>{playlist.name}</h1>
+      {playlist.videos.length > 0 && <h1>{playlist.name}</h1>}
+      {playlist.videos.length === 0 && (
+        <h1 className="empty-playlist">Playlist empty!</h1>
+      )}
       <div className="playlist-section">
         {state.playlistsArray.map((playlist) => {
           return (
             <>
-              {Number(playlistId) === playlist.id &&
+              {playlist.videos.length > 0 &&
+                Number(playlistId) === playlist.id &&
                 playlist.videos.map((movie) => {
                   return (
                     <Movie

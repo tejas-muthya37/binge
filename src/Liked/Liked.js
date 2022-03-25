@@ -17,28 +17,32 @@ const Liked = () => {
 
   return (
     <div className="Liked">
-      <h1>Liked videos</h1>
+      {state.likedArray.length > 0 && <h1>Liked videos</h1>}
       <div className="liked-videos-section">
-        {state.likedArray.map((movie) => {
-          return (
-            <Movie
-              key={movie.id}
-              source={movie.source}
-              thumbnail={movie.thumbnail}
-              title={movie.title}
-              likedPage={true}
-              removeFromLiked={() =>
-                dispatch({ type: "Remove from Liked", payload: movie })
-              }
-              addToWatchLater={() =>
-                dispatch({ type: "Add to Watch Later", payload: movie })
-              }
-              addToHistory={() =>
-                dispatch({ type: "Add to History", payload: movie })
-              }
-            />
-          );
-        })}
+        {state.likedArray.length === 0 && (
+          <h1 className="empty-liked">No liked videos!</h1>
+        )}
+        {state.likedArray.length > 0 &&
+          state.likedArray.map((movie) => {
+            return (
+              <Movie
+                key={movie.id}
+                source={movie.source}
+                thumbnail={movie.thumbnail}
+                title={movie.title}
+                likedPage={true}
+                removeFromLiked={() =>
+                  dispatch({ type: "Remove from Liked", payload: movie })
+                }
+                addToWatchLater={() =>
+                  dispatch({ type: "Add to Watch Later", payload: movie })
+                }
+                addToHistory={() =>
+                  dispatch({ type: "Add to History", payload: movie })
+                }
+              />
+            );
+          })}
       </div>
     </div>
   );

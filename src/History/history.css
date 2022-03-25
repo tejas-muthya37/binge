@@ -12,7 +12,7 @@
     gap: 4rem;
 }
 
-.history-section>* {
+.history-section>*:not(h1) {
     width: 17.5rem;
 }
 
@@ -35,6 +35,10 @@
     background-color: var(--binge-red);
     font-size: 1rem;
     cursor: pointer;
+}
+
+.History h1.empty-history {
+    text-align: center;
 }
 
 @media screen and (max-width: 600px) {
