@@ -19,14 +19,29 @@ const reducer = (state, action) => {
         return {
           ...state,
           likedArray: [...state.likedArray, action.payload],
+          dislikedArray: state.dislikedArray.filter(
+            (movie) => movie.id !== action.payload.id
+          ),
         };
       }
     case "Remove from Liked":
+      const dislikedVideoFound = state.dislikedArray.find(
+        (video) => video.id === action.payload.id
+      );
+      if (dislikedVideoFound) {
+        return {
+          ...state,
+          dislikedArray: state.dislikedArray.filter(
+            (movie) => movie.id !== action.payload.id
+          ),
+        };
+      }
       return {
         ...state,
         likedArray: state.likedArray.filter(
           (movie) => movie.id !== action.payload.id
         ),
+        dislikedArray: [...state.dislikedArray, action.payload],
       };
     case "Add to Watch Later":
       const watchLaterVideoFound = state.watchLaterArray.find(
@@ -116,6 +131,10 @@ const ProductsProvider = ({ children }) => {
 
   if (likedVideosArray === null) likedVideosArray = [];
 
+  var dislikedVideosArray = JSON.parse(localStorage.getItem("DISLIKED_ARRAY"));
+
+  if (dislikedVideosArray === null) dislikedVideosArray = [];
+
   var watchLaterVideosArray = JSON.parse(
     localStorage.getItem("WATCH_LATER_ARRAY")
   );
@@ -134,6 +153,7 @@ const ProductsProvider = ({ children }) => {
 
   const [state, dispatch] = useReducer(reducer, {
     likedArray: likedVideosArray,
+    dislikedArray: dislikedVideosArray,
     watchLaterArray: watchLaterVideosArray,
     historyArray: historyVideosArray,
     playlistsArray: playlistsVideosArray,

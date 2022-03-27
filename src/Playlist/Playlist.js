@@ -20,6 +20,21 @@ const Playlist = () => {
     );
   }, [state]);
 
+  useEffect(() => {
+    localStorage.setItem("LIKED_ARRAY", JSON.stringify(state.likedArray));
+    localStorage.setItem(
+      "WATCH_LATER_ARRAY",
+      JSON.stringify(state.watchLaterArray)
+    );
+    localStorage.setItem("HISTORY_ARRAY", JSON.stringify(state.historyArray));
+    localStorage.setItem("DISLIKED_ARRAY", JSON.stringify(state.dislikedArray));
+  }, [
+    state.likedArray,
+    state.watchLaterArray,
+    state.historyArray,
+    state.dislikedArray,
+  ]);
+
   return (
     <div className="Playlist">
       {playlist.videos.length > 0 && <h1>{playlist.name}</h1>}
@@ -61,6 +76,27 @@ const Playlist = () => {
                             videoId: movie.id,
                           },
                         })
+                      }
+                      likeButtonColor={
+                        state.likedArray.find(
+                          (element) => element.id === movie.id
+                        )
+                          ? "var(--binge-red)"
+                          : "whitesmoke"
+                      }
+                      dislikeButtonColor={
+                        state.dislikedArray.find(
+                          (element) => element.id === movie.id
+                        )
+                          ? "var(--binge-red)"
+                          : "whitesmoke"
+                      }
+                      watchLaterButtonColor={
+                        state.watchLaterArray.find(
+                          (element) => element.id === movie.id
+                        )
+                          ? "var(--binge-red)"
+                          : "whitesmoke"
                       }
                     />
                   );

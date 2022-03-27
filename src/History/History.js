@@ -13,7 +13,13 @@ const History = () => {
       JSON.stringify(state.watchLaterArray)
     );
     localStorage.setItem("HISTORY_ARRAY", JSON.stringify(state.historyArray));
-  }, [state.likedArray, state.watchLaterArray, state.historyArray]);
+    localStorage.setItem("DISLIKED_ARRAY", JSON.stringify(state.dislikedArray));
+  }, [
+    state.likedArray,
+    state.watchLaterArray,
+    state.historyArray,
+    state.dislikedArray,
+  ]);
 
   return (
     <div className="History">

@@ -13,7 +13,13 @@ const WatchLater = () => {
       JSON.stringify(state.watchLaterArray)
     );
     localStorage.setItem("HISTORY_ARRAY", JSON.stringify(state.historyArray));
-  }, [state.likedArray, state.watchLaterArray, state.historyArray]);
+    localStorage.setItem("DISLIKED_ARRAY", JSON.stringify(state.dislikedArray));
+  }, [
+    state.likedArray,
+    state.watchLaterArray,
+    state.historyArray,
+    state.dislikedArray,
+  ]);
 
   return (
     <div className="WatchLater">
@@ -42,6 +48,23 @@ const WatchLater = () => {
                 }
                 addToHistory={() =>
                   dispatch({ type: "Add to History", payload: movie })
+                }
+                likeButtonColor={
+                  state.likedArray.find((element) => element.id === movie.id)
+                    ? "var(--binge-red)"
+                    : "whitesmoke"
+                }
+                dislikeButtonColor={
+                  state.dislikedArray.find((element) => element.id === movie.id)
+                    ? "var(--binge-red)"
+                    : "whitesmoke"
+                }
+                watchLaterButtonColor={
+                  state.watchLaterArray.find(
+                    (element) => element.id === movie.id
+                  )
+                    ? "var(--binge-red)"
+                    : "whitesmoke"
                 }
               />
             );

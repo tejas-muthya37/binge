@@ -48,11 +48,21 @@ const Movie = (props) => {
       <div className="movie-card-footer">
         <p className="movie-title">{props.title}</p>
         <div className="footer-icons-group">
-          {!props.likedPage && (
-            <ThumbUpIcon onClick={props.addToLiked} fontSize="small" />
-          )}
-          <ThumbDownIcon onClick={props.removeFromLiked} fontSize="small" />
-          <WatchLaterIcon onClick={props.addToWatchLater} fontSize="small" />
+          <ThumbUpIcon
+            style={{ color: props.likeButtonColor }}
+            onClick={props.addToLiked}
+            fontSize="small"
+          />
+          <ThumbDownIcon
+            style={{ color: props.dislikeButtonColor }}
+            onClick={props.removeFromLiked}
+            fontSize="small"
+          />
+          <WatchLaterIcon
+            style={{ color: props.watchLaterButtonColor }}
+            onClick={props.addToWatchLater}
+            fontSize="small"
+          />
           {props.historyPage && (
             <DeleteIcon onClick={props.removeFromHistory} fontSize="small" />
           )}
