@@ -100,7 +100,13 @@ const reducer = (state, action) => {
     case "Add to Playlist":
       state.playlistsArray.map((playlist) => {
         if (playlist.id === action.payload.playlistId) {
-          playlist.videos = [...playlist.videos, action.payload.video];
+          if (
+            !playlist.videos.find(
+              (element) => element.id === action.payload.video.id
+            )
+          ) {
+            playlist.videos = [...playlist.videos, action.payload.video];
+          }
         }
         return true;
       });
