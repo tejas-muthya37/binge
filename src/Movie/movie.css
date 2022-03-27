@@ -16,9 +16,22 @@
 
 .playlist-name {
     padding: 0.5rem;
-    width: max-content;
     cursor: pointer;
-    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 95%;
+}
+
+.playlist-name #modal-checkbox {
+    accent-color: var(--binge-red);
+    transform: scale(1.5);
+}
+
+.modal-button {
+    color: var(--binge-red);
+    cursor: pointer;
+    margin-bottom: 1rem;
 }
 
 @media screen and (max-width: 600px) {

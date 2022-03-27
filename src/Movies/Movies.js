@@ -8,8 +8,8 @@ const Movies = (props) => {
   return (
     <div className="Movies">
       {props.categoryPage === false &&
-        categoryArray.map((category) => {
-          return <CategoryMovies category={category} />;
+        categoryArray.map((category, index) => {
+          return <CategoryMovies key={index} category={category} />;
         })}
 
       {props.categoryPage === true && (

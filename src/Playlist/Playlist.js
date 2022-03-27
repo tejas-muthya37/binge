@@ -50,6 +50,7 @@ const Playlist = () => {
                 playlist.videos.map((movie) => {
                   return (
                     <Movie
+                      key={movie.id}
                       id={movie.id}
                       source={movie.source}
                       thumbnail={movie.thumbnail}

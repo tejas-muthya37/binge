@@ -100,12 +100,18 @@ const reducer = (state, action) => {
     case "Add to Playlist":
       state.playlistsArray.map((playlist) => {
         if (playlist.id === action.payload.playlistId) {
-          if (
-            !playlist.videos.find(
-              (element) => element.id === action.payload.video.id
-            )
-          ) {
-            playlist.videos = [...playlist.videos, action.payload.video];
+          const videoFound = playlist.videos.find(
+            (element) => element.id === action.payload.video.id
+          );
+          console.log(videoFound);
+          if (action.payload.targetElement.checked) {
+            if (!videoFound) {
+              playlist.videos = [...playlist.videos, action.payload.video];
+            }
+          } else {
+            playlist.videos = playlist.videos.filter(
+              (element) => element.id !== action.payload.video.id
+            );
           }
         }
         return true;

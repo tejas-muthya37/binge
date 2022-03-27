@@ -5,6 +5,7 @@ import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import DeleteIcon from "@mui/icons-material/Delete";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
+import CloseIcon from "@mui/icons-material/Close";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import { useEffect, useState } from "react";
@@ -26,12 +27,15 @@ const Movie = (props) => {
     left: "50%",
     transform: "translate(-50%, -50%)",
     width: 225,
-    bgcolor: "whitesmoke",
+    bgcolor: "var(--binge-grey)",
     border: "none",
     outline: "none",
-    color: "var(--binge-grey)",
+    color: "whitesmoke",
     boxShadow: 24,
     p: 4,
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-end",
   };
 
   const [open, setOpen] = useState(false);
@@ -79,31 +83,42 @@ const Movie = (props) => {
             aria-describedby="modal-modal-description"
           >
             <Box sx={style}>
+              <CloseIcon
+                onClick={() => handleClose()}
+                className="modal-button"
+              />
               {state.playlistsArray.map((playlist) => {
                 return (
-                  <h3
+                  <div
                     key={playlist.id}
-                    onClick={() => {
-                      dispatch({
-                        type: "Add to Playlist",
-                        payload: {
-                          playlistId: playlist.id,
-                          video: {
-                            id: props.id,
-                            thumbnail: props.thumbnail,
-                            source: props.source,
-                            title: props.title,
-                            category: props.category,
-                          },
-                        },
-                      });
-                      handleClose();
-                    }}
                     className="
                 playlist-name"
                   >
-                    {playlist.name}
-                  </h3>
+                    <label htmlFor="modal-checkbox">
+                      <h3>{playlist.name}</h3>
+                    </label>
+
+                    <input
+                      id="modal-checkbox"
+                      onClick={(event) => {
+                        dispatch({
+                          type: "Add to Playlist",
+                          payload: {
+                            playlistId: playlist.id,
+                            video: {
+                              id: props.id,
+                              thumbnail: props.thumbnail,
+                              source: props.source,
+                              title: props.title,
+                              category: props.category,
+                            },
+                            targetElement: event.target,
+                          },
+                        });
+                      }}
+                      type="checkbox"
+                    />
+                  </div>
                 );
               })}
             </Box>
