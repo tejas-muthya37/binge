@@ -117,6 +117,13 @@ const Movie = (props) => {
                         });
                       }}
                       type="checkbox"
+                      defaultChecked={
+                        playlist.videos.find(
+                          (element) => element.id === props.id
+                        )
+                          ? true
+                          : false
+                      }
                     />
                   </div>
                 );
