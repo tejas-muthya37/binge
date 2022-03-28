@@ -1,5 +1,4 @@
 import "./categoryMovies.css";
-import moviesArray from "./../../moviesArray";
 import Movie from "./../Movie/Movie";
 import { useProducts } from "./../../products-context.js";
 import { useVideos } from "../../videos-context";
