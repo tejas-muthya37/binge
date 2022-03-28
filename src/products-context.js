@@ -227,6 +227,19 @@ const reducer = (state, action) => {
                 .then((data) => console.log(data));
             }
           } else {
+            fetch(
+              `/api/user/playlists/${action.payload.playlistId}/${action.payload.videoId}`,
+              {
+                method: "DELETE",
+                headers: {
+                  "Content-Type": "application/json",
+                  Accept: "application/json",
+                  authorization: encodedToken,
+                },
+              }
+            )
+              .then((res) => res.json())
+              .then((data) => console.log(data));
             playlist.videos = playlist.videos.filter(
               (element) => element.id !== action.payload.video.id
             );

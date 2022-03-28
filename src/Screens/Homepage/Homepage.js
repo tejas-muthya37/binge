@@ -25,7 +25,7 @@ const Homepage = () => {
       <div className="categories-section">
         {stateVideo.categoriesArray.map((category) => {
           return (
-            <Link to={"/movies/" + category.categoryName}>
+            <Link key={category.id} to={"/movies/" + category.categoryName}>
               <div className="category-card">
                 <img src={category.thumbnail} alt="" />
                 <p>{category.categoryName}</p>
