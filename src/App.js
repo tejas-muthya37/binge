@@ -1,14 +1,14 @@
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Homepage from "./Homepage/Homepage";
-import Navbar from "./Navbar/Navbar";
-import Movies from "./Movies/Movies";
-import Liked from "./Liked/Liked";
-import WatchLater from "./WatchLater/WatchLater";
-import History from "./History/History";
-import Playlists from "./Playlists/Playlists";
-import Playlist from "./Playlist/Playlist";
-import Authenticate from "./Authenticate/Authenticate";
+import Homepage from "./Screens/Homepage/Homepage";
+import Navbar from "./Components/Navbar/Navbar";
+import Movies from "./Screens/Movies/Movies";
+import Liked from "./Screens/Liked/Liked";
+import WatchLater from "./Screens/WatchLater/WatchLater";
+import History from "./Screens/History/History";
+import Playlists from "./Screens/Playlists/Playlists";
+import Playlist from "./Screens/Playlist/Playlist";
+import Authenticate from "./Screens/Authenticate/Authenticate";
 
 function App() {
   return (

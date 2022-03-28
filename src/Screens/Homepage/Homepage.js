@@ -5,7 +5,7 @@ import {
   actionCategory,
   romanceCategory,
   dramaCategory,
-} from "./../images.js";
+} from "./../../images.js";
 
 const Homepage = () => {
   return (

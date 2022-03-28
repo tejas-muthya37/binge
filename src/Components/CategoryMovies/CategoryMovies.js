@@ -1,7 +1,7 @@
 import "./categoryMovies.css";
-import moviesArray from "../moviesArray";
-import Movie from "../Movie/Movie";
-import { useProducts } from "./../products-context.js";
+import moviesArray from "./../../moviesArray";
+import Movie from "./../Movie/Movie";
+import { useProducts } from "./../../products-context.js";
 import { useEffect } from "react";
 
 const CategoryMovies = ({ category }) => {

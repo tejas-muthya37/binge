@@ -1,5 +1,5 @@
 import "./movies.css";
-import CategoryMovies from "../CategoryMovies/CategoryMovies";
+import CategoryMovies from "./../../Components/CategoryMovies/CategoryMovies";
 import { useParams } from "react-router-dom";
 
 const Movies = (props) => {

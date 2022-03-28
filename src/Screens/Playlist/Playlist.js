@@ -1,7 +1,7 @@
 import "./playlist.css";
-import Movie from "./../Movie/Movie";
+import Movie from "./../../Components/Movie/Movie";
 import { useParams } from "react-router";
-import { useProducts } from "./../products-context";
+import { useProducts } from "./../../products-context";
 import { useEffect } from "react";
 
 const Playlist = () => {

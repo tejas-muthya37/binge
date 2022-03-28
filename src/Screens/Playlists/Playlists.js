@@ -1,9 +1,9 @@
 import "./playlists.css";
-import PlaylistThumbnail from "../PlaylistThumbnail/PlaylistThumbnail";
+import PlaylistThumbnail from "./../../Components/PlaylistThumbnail/PlaylistThumbnail";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import { useState, useRef, useEffect } from "react";
-import { useProducts } from "./../products-context";
+import { useProducts } from "./../../products-context";
 
 const Playlists = () => {
   const inputRef = useRef(null);

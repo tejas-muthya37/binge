@@ -1,9 +1,9 @@
-import Movie from "./../Movie/Movie";
-import "./liked.css";
-import { useProducts } from "../products-context";
+import "./watchLater.css";
+import Movie from "./../../Components/Movie/Movie";
+import { useProducts } from "./../../products-context";
 import { useEffect } from "react";
 
-const Liked = () => {
+const WatchLater = () => {
   const { state, dispatch } = useProducts();
 
   useEffect(() => {
@@ -20,22 +20,23 @@ const Liked = () => {
     state.historyArray,
     state.dislikedArray,
   ]);
+
   return (
-    <div className="Liked">
-      {state.likedArray.length > 0 && <h1>Liked videos</h1>}
-      <div className="liked-videos-section">
-        {state.likedArray.length === 0 && (
-          <h1 className="empty-liked">No liked videos!</h1>
+    <div className="WatchLater">
+      {state.watchLaterArray.length > 0 && <h1>Watch later</h1>}
+      <div className="watch-later-section">
+        {state.watchLaterArray.length === 0 && (
+          <h1 className="empty-watch-later">Nothing to Watch Later!</h1>
         )}
-        {state.likedArray.length > 0 &&
-          state.likedArray.map((movie) => {
+        {state.watchLaterArray.length > 0 &&
+          state.watchLaterArray.map((movie) => {
             return (
               <Movie
                 key={movie.id}
                 source={movie.source}
                 thumbnail={movie.thumbnail}
                 title={movie.title}
-                likedPage={true}
+                notLikedPage={true}
                 addToLiked={() =>
                   dispatch({ type: "Add to Liked", payload: movie })
                 }
@@ -73,4 +74,4 @@ const Liked = () => {
   );
 };
 
-export default Liked;
+export default WatchLater;

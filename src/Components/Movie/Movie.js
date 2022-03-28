@@ -9,7 +9,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import { useEffect, useState } from "react";
-import { useProducts } from "./../products-context";
+import { useProducts } from "./../../products-context";
 
 const Movie = (props) => {
   const { state, dispatch } = useProducts();
