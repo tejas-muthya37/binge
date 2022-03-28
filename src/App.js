@@ -9,13 +9,16 @@ import History from "./Screens/History/History";
 import Playlists from "./Screens/Playlists/Playlists";
 import Playlist from "./Screens/Playlist/Playlist";
 import Authenticate from "./Screens/Authenticate/Authenticate";
+import Mockman from "mockman-js";
 
 function App() {
   return (
     <Router>
       <div className="App">
         <Switch>
-          <Route exact path="/mock"></Route>
+          <Route exact path="/mock">
+            <Mockman />
+          </Route>
 
           <Route exact path="/">
             <Navbar />
