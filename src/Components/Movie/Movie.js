@@ -94,7 +94,6 @@ const Movie = (props) => {
           {!props.playlistPage && !props.historyPage && (
             <PlaylistAddIcon
               onClick={() => {
-                // encodedToken === null ? navigate("/login") : handleOpen();
                 if (encodedToken === null) navigate("/login");
                 else if (state.playlistsArray.length === 0)
                   navigate("/playlists");
