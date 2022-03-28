@@ -1,7 +1,6 @@
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Homepage from "./Screens/Homepage/Homepage";
-import Navbar from "./Components/Navbar/Navbar";
 import Movies from "./Screens/Movies/Movies";
 import Liked from "./Screens/Liked/Liked";
 import WatchLater from "./Screens/WatchLater/WatchLater";
@@ -10,74 +9,99 @@ import Playlists from "./Screens/Playlists/Playlists";
 import Playlist from "./Screens/Playlist/Playlist";
 import Authenticate from "./Screens/Authenticate/Authenticate";
 import Mockman from "mockman-js";
+import Navbar from "./Components/Navbar/Navbar";
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Switch>
-          <Route exact path="/mock">
-            <Mockman />
-          </Route>
-
-          <Route exact path="/">
-            <Navbar />
-            <Homepage />
-          </Route>
-
-          <Route exact path="/movies">
-            <Navbar />
-            <Movies categoryPage={false} />
-          </Route>
-
-          <Route exact path="/movies/:categoryName">
-            <Navbar />
-            <Movies categoryPage={true} />
-          </Route>
-
-          <Route exact path="/liked">
-            <Navbar />
-            <Liked />
-          </Route>
-
-          <Route exact path="/watch-later">
-            <Navbar />
-            <WatchLater />
-          </Route>
-
-          <Route exact path="/history">
-            <Navbar />
-            <History />
-          </Route>
-
-          <Route exact path="/playlists">
-            <Navbar />
-            <Playlists />
-          </Route>
-
-          <Route exact path="/playlist/:playlistId">
-            <Navbar />
-            <Playlist />
-          </Route>
-
-          <Route exact path="/login">
+    <BrowserRouter>
+      <Routes>
+        <Route path="/mock" element={<Mockman />} />
+        <Route
+          path="/"
+          element={
+            <>
+              <Navbar /> <Homepage />{" "}
+            </>
+          }
+        />
+        <Route
+          path="/movies"
+          element={
+            <>
+              <Navbar /> <Movies categoryPage={false} />{" "}
+            </>
+          }
+        />
+        <Route
+          path="/movies/:categoryName"
+          element={
+            <>
+              <Navbar /> <Movies categoryPage={true} />{" "}
+            </>
+          }
+        />
+        <Route
+          path="/liked"
+          element={
+            <>
+              <Navbar /> <Liked />{" "}
+            </>
+          }
+        />
+        <Route
+          path="/watch-later"
+          element={
+            <>
+              <Navbar /> <WatchLater />{" "}
+            </>
+          }
+        />
+        <Route
+          path="/history"
+          element={
+            <>
+              <Navbar /> <History />{" "}
+            </>
+          }
+        />
+        <Route
+          path="/playlists"
+          element={
+            <>
+              <Navbar /> <Playlists />{" "}
+            </>
+          }
+        />
+        <Route
+          path="/playlist/:playlistId"
+          element={
+            <>
+              <Navbar /> <Playlist />{" "}
+            </>
+          }
+        />
+        <Route
+          path="/login"
+          element={
             <Authenticate
               cardTitle="LOGIN"
               checkboxLabel="Remember me"
               alternate="Create New Account"
             />
-          </Route>
-
-          <Route exact path="/signup">
+          }
+        />
+        <Route
+          path="/signup"
+          element={
             <Authenticate
               cardTitle="SIGN UP"
               checkboxLabel="I agree to the terms and conditions"
               alternate="Login With Existing Account"
             />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

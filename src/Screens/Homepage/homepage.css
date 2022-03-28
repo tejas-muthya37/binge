@@ -1,4 +1,8 @@
-.Homepage button {
+.Homepage {
+    text-align: center;
+}
+
+.Homepage .homepage-button {
     background-color: var(--binge-red);
     border: none;
     height: 3rem;
@@ -7,13 +11,14 @@
     color: whitesmoke;
     font-size: 1.3rem;
     cursor: pointer;
-    margin-bottom: 2rem;
+    margin: 2rem auto;
 }
 
 .categories-section {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
+    margin-top: 1rem;
 }
 
 .categories-section img {
@@ -34,9 +39,8 @@
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-    padding: 2rem;
+    padding: 0 2rem;
     cursor: pointer;
-    transition: transform 0.1s ease-out;
 }
 
 .category-card p {

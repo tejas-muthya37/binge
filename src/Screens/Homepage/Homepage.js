@@ -37,7 +37,7 @@ const Homepage = () => {
         </Link>
       </div>
       <Link to="/movies">
-        <button>Watch Now</button>
+        <button className="homepage-button">Watch Now</button>
       </Link>
     </div>
   );
