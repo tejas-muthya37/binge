@@ -18,6 +18,7 @@ const Movies = (props) => {
             />
           );
         })}
+
       {props.categoryPage === true && (
         <CategoryMovies category={categoryName} />
       )}
