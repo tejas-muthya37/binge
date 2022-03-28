@@ -2,9 +2,23 @@ import "./categoryMovies.css";
 import moviesArray from "./../../moviesArray";
 import Movie from "./../Movie/Movie";
 import { useProducts } from "./../../products-context.js";
+import { useVideos } from "../../videos-context";
 import { useEffect } from "react";
 
 const CategoryMovies = ({ category }) => {
+  const { stateVideo, dispatchVideo } = useVideos();
+  useEffect(() => {
+    fetch("/api/videos", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => dispatchVideo({ type: "Setup", payload: data.videos }));
+  }, []);
+
   const { state, dispatch } = useProducts();
 
   useEffect(() => {
@@ -26,7 +40,7 @@ const CategoryMovies = ({ category }) => {
     <div className="CategoryMovies">
       <h1>{category}</h1>
       <div className="category-movies-section">
-        {moviesArray.map((movie) => {
+        {stateVideo.videosArray.map((movie) => {
           return (
             movie.category === category && (
               <Movie

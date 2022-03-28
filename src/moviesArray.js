@@ -1,6 +1,6 @@
 import { thrillerThumbnailOne } from "./images.js";
 
-const moviesArray = [
+var moviesArray = [
   {
     id: 1,
     thumbnail: thrillerThumbnailOne,
@@ -116,3 +116,14 @@ const moviesArray = [
 ];
 
 export default moviesArray;
+// var moviesArray;
+
+// fetch("/api/videos", {
+//   method: "GET",
+//   headers: {
+//     "Content-Type": "application/json",
+//     Accept: "application/json",
+//   },
+// })
+//   .then((res) => res.json())
+//   .then((data) => console.log(data));
