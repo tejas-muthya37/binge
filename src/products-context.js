@@ -133,6 +133,14 @@ const reducer = (state, action) => {
         ...state,
         playlistsArray: state.playlistsArray,
       };
+    case "Handle Logout":
+      return {
+        likedArray: [],
+        dislikedArray: [],
+        watchLaterArray: [],
+        historyArray: [],
+        playlistsArray: [],
+      };
     default:
       return state;
   }

@@ -4,8 +4,40 @@ import WatchLaterIcon from "@mui/icons-material/WatchLater";
 import HistoryIcon from "@mui/icons-material/History";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import { Link } from "react-router-dom";
+import { useProducts } from "./../../products-context";
+import { useEffect } from "react";
 
 const Navbar = () => {
+  const encodedToken = localStorage.getItem("ENCODED_TOKEN_2");
+
+  const { state, dispatch } = useProducts();
+
+  useEffect(() => {
+    localStorage.setItem("LIKED_ARRAY", JSON.stringify(state.likedArray));
+    localStorage.setItem(
+      "WATCH_LATER_ARRAY",
+      JSON.stringify(state.watchLaterArray)
+    );
+    localStorage.setItem("HISTORY_ARRAY", JSON.stringify(state.historyArray));
+    localStorage.setItem("DISLIKED_ARRAY", JSON.stringify(state.dislikedArray));
+  }, [
+    state.likedArray,
+    state.watchLaterArray,
+    state.historyArray,
+    state.dislikedArray,
+  ]);
+
+  const handleLogout = () => {
+    // if (navbarButtonText === "Logout") {
+    localStorage.removeItem("ENCODED_TOKEN_2");
+    localStorage.removeItem("LIKED_ARRAY");
+    localStorage.removeItem("WATCH_LATER_ARRAY");
+    localStorage.removeItem("HISTORY_ARRAY");
+    localStorage.removeItem("PLAYLISTS_ARRAY");
+    dispatch({ type: "Handle Logout" });
+    // setNavbarButtonText("Login");
+    // }
+  };
   return (
     <div className="Navbar">
       <nav>
@@ -17,22 +49,22 @@ const Navbar = () => {
         <div className="nav-right">
           <ul className="ul-laptop-view">
             <li>
-              <Link to="/liked">
+              <Link to={encodedToken === null ? "/login" : "/liked"}>
                 <ThumbUpIcon />
               </Link>
             </li>
             <li>
-              <Link to="/playlists">
+              <Link to={encodedToken === null ? "/login" : "/playlists"}>
                 <SubscriptionsIcon />
               </Link>
             </li>
             <li>
-              <Link to="/watch-later">
+              <Link to={encodedToken === null ? "/login" : "/watch-later"}>
                 <WatchLaterIcon />
               </Link>
             </li>
             <li>
-              <Link to="/history">
+              <Link to={encodedToken === null ? "/login" : "/history"}>
                 <HistoryIcon />
               </Link>
             </li>
@@ -40,29 +72,29 @@ const Navbar = () => {
 
           <ul className="ul-mobile-view">
             <li>
-              <Link to="/liked">
+              <Link to={encodedToken === null ? "/login" : "/liked"}>
                 <ThumbUpIcon fontSize="small" />
               </Link>
             </li>
             <li>
-              <Link to="/playlists">
+              <Link to={encodedToken === null ? "/login" : "/playlists"}>
                 <SubscriptionsIcon fontSize="small" />
               </Link>
             </li>
             <li>
-              <Link to="/watch-later">
+              <Link to={encodedToken === null ? "/login" : "/watch-later"}>
                 <WatchLaterIcon fontSize="small" />
               </Link>
             </li>
             <li>
-              <Link to="/history">
+              <Link to={encodedToken === null ? "/login" : "/history"}>
                 <HistoryIcon fontSize="small" />
               </Link>
             </li>
           </ul>
         </div>
       </nav>{" "}
-      <button>SIGN OUT</button>
+      <button onClick={handleLogout}>SIGN OUT</button>
     </div>
   );
 };
