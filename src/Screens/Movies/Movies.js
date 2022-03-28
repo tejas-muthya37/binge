@@ -10,12 +10,14 @@ const Movies = (props) => {
   return (
     <div className="Movies">
       {props.categoryPage === false &&
-        stateVideo.categoriesArray.map((category, index) => {
+        stateVideo.categoriesArray.map((category) => {
           return (
-            <CategoryMovies key={index} category={category.categoryName} />
+            <CategoryMovies
+              key={category.id}
+              category={category.categoryName}
+            />
           );
         })}
-
       {props.categoryPage === true && (
         <CategoryMovies category={categoryName} />
       )}

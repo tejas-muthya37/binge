@@ -18,7 +18,7 @@ const Homepage = () => {
       .then((data) =>
         dispatchVideo({ type: "Categories setup", payload: data.categories })
       );
-  }, []);
+  }, [dispatchVideo]);
 
   return (
     <div className="Homepage">
