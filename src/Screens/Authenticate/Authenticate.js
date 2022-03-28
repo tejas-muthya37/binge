@@ -2,11 +2,14 @@ import "./authenticate.css";
 import { useNavigate } from "react-router-dom";
 import { useRef } from "react";
 import { useToast } from "./../../toast-context";
+import { useNavbar } from "./../../navbar-context";
 
 function Authenticate(props) {
   let navigate = useNavigate();
 
   const { toggleToast, toastVisibility, toastColor, toastText } = useToast();
+
+  const { setNavbarButtonText } = useNavbar();
 
   const emailPattern = /\S+@\S+\.\S+/;
   const emailRef = useRef(null);
@@ -34,7 +37,7 @@ function Authenticate(props) {
             emailRef.current.value = "";
             passwordRef.current.value = "";
             localStorage.setItem("ENCODED_TOKEN_2", data.encodedToken);
-            // setNavbarButtonText("Logout");
+            setNavbarButtonText("SIGN OUT");
             navigate("/movies");
           } else {
             toggleToast(
@@ -72,7 +75,7 @@ function Authenticate(props) {
               emailRef.current.value = "";
               passwordRef.current.value = "";
               localStorage.setItem("ENCODED_TOKEN_2", data.encodedToken);
-              // setNavbarButtonText("Logout");
+              setNavbarButtonText("SIGN OUT");
               navigate("/movies");
             }
           });

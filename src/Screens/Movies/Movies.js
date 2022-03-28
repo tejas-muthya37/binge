@@ -1,15 +1,19 @@
 import "./movies.css";
 import CategoryMovies from "./../../Components/CategoryMovies/CategoryMovies";
 import { useParams } from "react-router-dom";
+import { useVideos } from "../../videos-context";
 
 const Movies = (props) => {
+  const { stateVideo } = useVideos();
   const { categoryName } = useParams();
-  const categoryArray = ["Thrillers", "Action", "Romance", "Drama"];
+
   return (
     <div className="Movies">
       {props.categoryPage === false &&
-        categoryArray.map((category, index) => {
-          return <CategoryMovies key={index} category={category} />;
+        stateVideo.categoriesArray.map((category, index) => {
+          return (
+            <CategoryMovies key={index} category={category.categoryName} />
+          );
         })}
 
       {props.categoryPage === true && (

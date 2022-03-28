@@ -1,40 +1,38 @@
 import { Link } from "react-router-dom";
 import "./homepage.css";
-import {
-  thrillerCategory,
-  actionCategory,
-  romanceCategory,
-  dramaCategory,
-} from "./../../images.js";
+import { useVideos } from "../../videos-context";
+import { useEffect } from "react";
 
 const Homepage = () => {
+  const { stateVideo, dispatchVideo } = useVideos();
+
+  useEffect(() => {
+    fetch("/api/categories", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) =>
+        dispatchVideo({ type: "Categories setup", payload: data.categories })
+      );
+  });
+
   return (
     <div className="Homepage">
       <div className="categories-section">
-        <Link to="/movies/Thrillers">
-          <div id="thriller-category" className="category-card">
-            <img src={thrillerCategory} alt="" />
-            <p>Thrillers</p>
-          </div>
-        </Link>
-        <Link to="/movies/Action">
-          <div id="drama-category" className="category-card">
-            <img src={actionCategory} alt="" />
-            <p>Action</p>
-          </div>
-        </Link>
-        <Link to="/movies/Romance">
-          <div id="scifi-category" className="category-card">
-            <img src={romanceCategory} alt="" />
-            <p>Romance</p>
-          </div>
-        </Link>
-        <Link to="/movies/Drama">
-          <div id="romance-category" className="category-card">
-            <img src={dramaCategory} alt="" />
-            <p>Drama</p>
-          </div>
-        </Link>
+        {stateVideo.categoriesArray.map((category) => {
+          return (
+            <Link to={"/movies/" + category.categoryName}>
+              <div className="category-card">
+                <img src={category.thumbnail} alt="" />
+                <p>{category.categoryName}</p>
+              </div>
+            </Link>
+          );
+        })}
       </div>
       <Link to="/movies">
         <button className="homepage-button">Watch Now</button>

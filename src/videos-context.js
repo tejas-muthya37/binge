@@ -9,6 +9,11 @@ const reducer = (state, action) => {
         ...state,
         videosArray: action.payload,
       };
+    case "Categories setup":
+      return {
+        ...state,
+        categoriesArray: action.payload,
+      };
     default:
       return state;
   }
@@ -17,6 +22,7 @@ const reducer = (state, action) => {
 const VideosProvider = ({ children }) => {
   const [stateVideo, dispatchVideo] = useReducer(reducer, {
     videosArray: [],
+    categoriesArray: [],
   });
   return (
     <VideosContext.Provider value={{ stateVideo, dispatchVideo }}>

@@ -1,5 +1,10 @@
 import { v4 as uuid } from "uuid";
-
+import {
+  actionCategory,
+  thrillerCategory,
+  romanceCategory,
+  dramaCategory,
+} from "../../images";
 /**
  * Category Database can be added here.
  * You can add category of your wish with different attributes
@@ -8,20 +13,26 @@ import { v4 as uuid } from "uuid";
 export const categories = [
   {
     _id: uuid(),
-    categoryName: "Computer Programming",
-    description:
-      "Computer programming is the process of designing and building an executable computer program to accomplish a specific computing",
+    categoryName: "Thrillers",
+    description: "",
+    thumbnail: thrillerCategory,
   },
   {
     _id: uuid(),
-    categoryName: "Frontend Development",
-    description:
-      "Front-end web development, also known as client-side development is the practice of producing HTML, CSS and JavaScript for a website or Web Application",
+    categoryName: "Action",
+    description: "",
+    thumbnail: actionCategory,
   },
   {
     _id: uuid(),
-    categoryName: "Backend Development",
-    description:
-      "Backend Development is also known as server-side development. It is everything that the users don't see and contains behind-the-scenes activities that occur when performing any action on a website.",
+    categoryName: "Romance",
+    description: "",
+    thumbnail: romanceCategory,
+  },
+  {
+    _id: uuid(),
+    categoryName: "Drama",
+    description: "",
+    thumbnail: dramaCategory,
   },
 ];

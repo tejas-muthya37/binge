@@ -6,9 +6,15 @@ import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import { Link } from "react-router-dom";
 import { useProducts } from "./../../products-context";
 import { useEffect } from "react";
+import { useNavbar } from "./../../navbar-context";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  let navigate = useNavigate();
+
   const encodedToken = localStorage.getItem("ENCODED_TOKEN_2");
+
+  const { navbarButtonText, setNavbarButtonText } = useNavbar();
 
   const { state, dispatch } = useProducts();
 
@@ -28,15 +34,18 @@ const Navbar = () => {
   ]);
 
   const handleLogout = () => {
-    // if (navbarButtonText === "Logout") {
-    localStorage.removeItem("ENCODED_TOKEN_2");
-    localStorage.removeItem("LIKED_ARRAY");
-    localStorage.removeItem("WATCH_LATER_ARRAY");
-    localStorage.removeItem("HISTORY_ARRAY");
-    localStorage.removeItem("PLAYLISTS_ARRAY");
-    dispatch({ type: "Handle Logout" });
-    // setNavbarButtonText("Login");
-    // }
+    if (navbarButtonText === "SIGN OUT") {
+      localStorage.removeItem("ENCODED_TOKEN_2");
+      localStorage.removeItem("LIKED_ARRAY");
+      localStorage.removeItem("WATCH_LATER_ARRAY");
+      localStorage.removeItem("HISTORY_ARRAY");
+      localStorage.removeItem("PLAYLISTS_ARRAY");
+      dispatch({ type: "Handle Logout" });
+      setNavbarButtonText("SIGN IN");
+      navigate("/movies");
+    } else {
+      navigate("/login");
+    }
   };
   return (
     <div className="Navbar">
@@ -94,7 +103,7 @@ const Navbar = () => {
           </ul>
         </div>
       </nav>{" "}
-      <button onClick={handleLogout}>SIGN OUT</button>
+      <button onClick={handleLogout}>{navbarButtonText}</button>
     </div>
   );
 };
