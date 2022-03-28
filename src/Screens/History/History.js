@@ -23,7 +23,7 @@ const History = () => {
 
   return (
     <div className="History">
-      <div class="history-header">
+      <div className="history-header">
         {state.historyArray.length > 0 && <h1>History</h1>}
         {state.historyArray.length > 0 && (
           <button onClick={() => dispatch({ type: "Clear History" })}>

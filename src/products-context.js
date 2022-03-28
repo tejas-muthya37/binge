@@ -3,12 +3,24 @@ import { useReducer, useContext, createContext } from "react";
 const ProductsContext = createContext(null);
 
 const reducer = (state, action) => {
+  const encodedToken = localStorage.getItem("ENCODED_TOKEN_2");
+
   switch (action.type) {
     case "Add to Liked":
       const likedVideoFound = state.likedArray.find(
         (video) => video.id === action.payload.id
       );
       if (likedVideoFound) {
+        fetch(`/api/user/likes/${action.payload.id}`, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            authorization: encodedToken,
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => console.log(data));
         return {
           ...state,
           likedArray: state.likedArray.filter(
@@ -16,6 +28,17 @@ const reducer = (state, action) => {
           ),
         };
       } else {
+        fetch("/api/user/likes", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            authorization: encodedToken,
+          },
+          body: JSON.stringify({ video: action.payload }),
+        })
+          .then((res) => res.json())
+          .then((data) => console.log(data));
         return {
           ...state,
           likedArray: [...state.likedArray, action.payload],
@@ -36,6 +59,16 @@ const reducer = (state, action) => {
           ),
         };
       }
+      fetch(`/api/user/likes/${action.payload.id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          authorization: encodedToken,
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => console.log(data));
       return {
         ...state,
         likedArray: state.likedArray.filter(
@@ -48,6 +81,16 @@ const reducer = (state, action) => {
         (video) => video.id === action.payload.id
       );
       if (watchLaterVideoFound) {
+        fetch(`/api/user/watchlater/${action.payload.id}`, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            authorization: encodedToken,
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => console.log(data));
         return {
           ...state,
           watchLaterArray: state.watchLaterArray.filter(
@@ -55,6 +98,17 @@ const reducer = (state, action) => {
           ),
         };
       } else {
+        fetch("/api/user/watchlater", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            authorization: encodedToken,
+          },
+          body: JSON.stringify({ video: action.payload }),
+        })
+          .then((res) => res.json())
+          .then((data) => console.log(data));
         return {
           ...state,
           watchLaterArray: [...state.watchLaterArray, action.payload],
@@ -66,6 +120,17 @@ const reducer = (state, action) => {
         state.historyArray[state.historyArray.length - 1].id !==
           action.payload.id
       ) {
+        fetch("/api/user/history", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            authorization: encodedToken,
+          },
+          body: JSON.stringify({ video: action.payload }),
+        })
+          .then((res) => res.json())
+          .then((data) => console.log(data));
         return {
           ...state,
           historyArray: [...state.historyArray, action.payload],
@@ -74,6 +139,16 @@ const reducer = (state, action) => {
         return state;
       }
     case "Remove from History":
+      fetch(`/api/user/history/${action.payload.id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          authorization: encodedToken,
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => console.log(data));
       return {
         ...state,
         historyArray: state.historyArray.filter(
@@ -81,16 +156,49 @@ const reducer = (state, action) => {
         ),
       };
     case "Clear History":
+      fetch("/api/user/history/all", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          authorization: encodedToken,
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => console.log(data));
       return {
         ...state,
         historyArray: [],
       };
     case "Add Playlist":
+      fetch("/api/user/playlists", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          authorization: encodedToken,
+        },
+        body: JSON.stringify({
+          playlist: { title: action.payload.name, description: "" },
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => console.log(data));
       return {
         ...state,
         playlistsArray: [...state.playlistsArray, action.payload],
       };
     case "Remove Playlist":
+      fetch(`/api/user/playlists/${action.payload}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          authorization: encodedToken,
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => console.log(data));
       return {
         ...state,
         playlistsArray: state.playlistsArray.filter(
@@ -103,10 +211,20 @@ const reducer = (state, action) => {
           const videoFound = playlist.videos.find(
             (element) => element.id === action.payload.video.id
           );
-          console.log(videoFound);
           if (action.payload.targetElement.checked) {
             if (!videoFound) {
               playlist.videos = [...playlist.videos, action.payload.video];
+              fetch(`/api/user/playlists/${action.payload.playlistId}`, {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  Accept: "application/json",
+                  authorization: encodedToken,
+                },
+                body: JSON.stringify({ video: action.payload.video }),
+              })
+                .then((res) => res.json())
+                .then((data) => console.log(data));
             }
           } else {
             playlist.videos = playlist.videos.filter(
@@ -123,6 +241,19 @@ const reducer = (state, action) => {
     case "Remove from Playlist":
       state.playlistsArray.map((playlist) => {
         if (playlist.id === action.payload.playlistId) {
+          fetch(
+            `/api/user/playlists/${action.payload.playlistId}/${action.payload.videoId}`,
+            {
+              method: "DELETE",
+              headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                authorization: encodedToken,
+              },
+            }
+          )
+            .then((res) => res.json())
+            .then((data) => console.log(data));
           playlist.videos = playlist.videos.filter(
             (video) => video.id !== action.payload.videoId
           );

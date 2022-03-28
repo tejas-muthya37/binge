@@ -10,9 +10,13 @@ import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import { useEffect, useState } from "react";
 import { useProducts } from "./../../products-context";
+import { useNavigate } from "react-router-dom";
 
 const Movie = (props) => {
+  let navigate = useNavigate();
   const { state, dispatch } = useProducts();
+
+  const encodedToken = localStorage.getItem("ENCODED_TOKEN_2");
 
   useEffect(() => {
     localStorage.setItem(
@@ -44,7 +48,11 @@ const Movie = (props) => {
 
   return (
     <div className="Movie">
-      <div onClick={props.addToHistory}>
+      <div
+        onClick={() => {
+          encodedToken === null ? navigate("/login") : props.addToHistory();
+        }}
+      >
         <Player poster={props.thumbnail} src={props.source}>
           <BigPlayButton position="center" />
         </Player>
@@ -54,17 +62,27 @@ const Movie = (props) => {
         <div className="footer-icons-group">
           <ThumbUpIcon
             style={{ color: props.likeButtonColor }}
-            onClick={props.addToLiked}
+            onClick={() => {
+              encodedToken === null ? navigate("/login") : props.addToLiked();
+            }}
             fontSize="small"
           />
           <ThumbDownIcon
             style={{ color: props.dislikeButtonColor }}
-            onClick={props.removeFromLiked}
+            onClick={() => {
+              encodedToken === null
+                ? navigate("/login")
+                : props.removeFromLiked();
+            }}
             fontSize="small"
           />
           <WatchLaterIcon
             style={{ color: props.watchLaterButtonColor }}
-            onClick={props.addToWatchLater}
+            onClick={() => {
+              encodedToken === null
+                ? navigate("/login")
+                : props.addToWatchLater();
+            }}
             fontSize="small"
           />
           {props.historyPage && (
@@ -74,7 +92,11 @@ const Movie = (props) => {
             <DeleteIcon onClick={props.removeFromPlaylist} fontSize="small" />
           )}
           {!props.playlistPage && !props.historyPage && (
-            <PlaylistAddIcon onClick={handleOpen} />
+            <PlaylistAddIcon
+              onClick={() => {
+                encodedToken === null ? navigate("/login") : handleOpen();
+              }}
+            />
           )}
           <Modal
             open={open}

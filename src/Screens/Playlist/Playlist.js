@@ -44,7 +44,7 @@ const Playlist = () => {
       <div className="playlist-section">
         {state.playlistsArray.map((playlist) => {
           return (
-            <>
+            <div key={playlist.id}>
               {playlist.videos.length > 0 &&
                 Number(playlistId) === playlist.id &&
                 playlist.videos.map((movie) => {
@@ -102,7 +102,7 @@ const Playlist = () => {
                     />
                   );
                 })}
-            </>
+            </div>
           );
         })}
       </div>
