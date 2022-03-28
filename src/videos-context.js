@@ -2,20 +2,21 @@ import { useReducer, useContext, createContext } from "react";
 
 const VideosContext = createContext(null);
 
-const reducer = (state, action) => {
+const reducer = (stateVideo, action) => {
   switch (action.type) {
     case "Setup":
+      console.log("Setting up!");
       return {
-        ...state,
+        ...stateVideo,
         videosArray: action.payload,
       };
     case "Categories setup":
       return {
-        ...state,
+        ...stateVideo,
         categoriesArray: action.payload,
       };
     default:
-      return state;
+      return stateVideo;
   }
 };
 

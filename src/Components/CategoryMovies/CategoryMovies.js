@@ -6,17 +6,17 @@ import { useEffect } from "react";
 
 const CategoryMovies = ({ category }) => {
   const { stateVideo, dispatchVideo } = useVideos();
+
   useEffect(() => {
     fetch("/api/videos", {
       method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
     })
       .then((res) => res.json())
-      .then((data) => dispatchVideo({ type: "Setup", payload: data.videos }));
-  }, []);
+      .then((data) => {
+        console.log(data);
+        dispatchVideo({ type: "Setup", payload: data.videos });
+      });
+  }, [dispatchVideo]);
 
   const { state, dispatch } = useProducts();
 
