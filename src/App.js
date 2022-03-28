@@ -15,6 +15,8 @@ function App() {
     <Router>
       <div className="App">
         <Switch>
+          <Route exact path="/mock"></Route>
+
           <Route exact path="/">
             <Navbar />
             <Homepage />
