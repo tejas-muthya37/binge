@@ -3,7 +3,7 @@ import PlaylistThumbnail from "./../../Components/PlaylistThumbnail/PlaylistThum
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import { useState, useRef, useEffect } from "react";
-import { useProducts } from "./../../products-context";
+import { useProducts } from "./../../Context/products-context";
 
 const Playlists = () => {
   const encodedToken = localStorage.getItem("ENCODED_TOKEN_2");

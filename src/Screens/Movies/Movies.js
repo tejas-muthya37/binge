@@ -1,7 +1,7 @@
 import "./movies.css";
 import CategoryMovies from "./../../Components/CategoryMovies/CategoryMovies";
 import { useParams } from "react-router-dom";
-import { useVideos } from "./../../videos-context";
+import { useVideos } from "./../../Context/videos-context";
 import { useEffect } from "react";
 
 const Movies = (props) => {

@@ -1,6 +1,6 @@
 import "./history.css";
 import Movie from "./../../Components/Movie/Movie";
-import { useProducts } from "./../../products-context";
+import { useProducts } from "./../../Context/products-context";
 import { useEffect } from "react";
 
 const History = () => {

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "./homepage.css";
-import { useVideos } from "../../videos-context";
+import { useVideos } from "./../../Context/videos-context";
 import { useEffect } from "react";
 
 const Homepage = () => {

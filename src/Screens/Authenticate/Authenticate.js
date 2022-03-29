@@ -1,8 +1,8 @@
 import "./authenticate.css";
 import { useNavigate } from "react-router-dom";
 import { useRef } from "react";
-import { useToast } from "./../../toast-context";
-import { useNavbar } from "./../../navbar-context";
+import { useToast } from "./../../Context/toast-context";
+import { useNavbar } from "./../../Context/navbar-context";
 
 function Authenticate(props) {
   let navigate = useNavigate();

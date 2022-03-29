@@ -1,10 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import { ProductsProvider } from "./products-context.js";
-import { VideosProvider } from "./videos-context";
-import { ToastProvider } from "./toast-context";
-import { NavbarProvider } from "./navbar-context";
+import { ProductsProvider } from "./Context/products-context.js";
+import { VideosProvider } from "./Context/videos-context.js";
+import { ToastProvider } from "./Context/toast-context.js";
+import { NavbarProvider } from "./Context/navbar-context.js";
+import { TokenProvider } from "./Context/token-context.js";
 import { makeServer } from "./server";
 
 makeServer();
@@ -15,7 +16,9 @@ ReactDOM.render(
       <VideosProvider>
         <ToastProvider>
           <NavbarProvider>
-            <App />
+            <TokenProvider>
+              <App />
+            </TokenProvider>
           </NavbarProvider>
         </ToastProvider>
       </VideosProvider>

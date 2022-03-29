@@ -4,9 +4,9 @@ import WatchLaterIcon from "@mui/icons-material/WatchLater";
 import HistoryIcon from "@mui/icons-material/History";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import { Link } from "react-router-dom";
-import { useProducts } from "./../../products-context";
+import { useProducts } from "./../../Context/products-context";
 import { useEffect } from "react";
-import { useNavbar } from "./../../navbar-context";
+import { useNavbar } from "./../../Context/navbar-context";
 import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
