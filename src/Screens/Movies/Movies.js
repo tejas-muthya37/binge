@@ -25,6 +25,7 @@ const Movies = (props) => {
           {stateVideo.categoriesArray.map((category) => {
             return (
               <CategoryMovies
+                key={category.id}
                 id={category.id}
                 category={category.categoryName}
               />
