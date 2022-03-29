@@ -2,11 +2,12 @@ import "./history.css";
 import Movie from "./../../Components/Movie/Movie";
 import { useProducts } from "./../../Context/products-context";
 import { useEffect } from "react";
+import { useToken } from "./../../Context/token-context";
 
 const History = () => {
   const { state, dispatch } = useProducts();
 
-  const encodedToken = localStorage.getItem("ENCODED_TOKEN_2");
+  const { encodedToken } = useToken();
 
   useEffect(() => {
     fetch("/api/user/history", {

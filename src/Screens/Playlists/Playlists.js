@@ -4,9 +4,10 @@ import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import { useState, useRef, useEffect } from "react";
 import { useProducts } from "./../../Context/products-context";
+import { useToken } from "./../../Context/token-context";
 
 const Playlists = () => {
-  const encodedToken = localStorage.getItem("ENCODED_TOKEN_2");
+  const { encodedToken } = useToken();
 
   useEffect(() => {
     fetch("/api/user/playlists", {

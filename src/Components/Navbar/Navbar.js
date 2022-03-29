@@ -8,11 +8,12 @@ import { useProducts } from "./../../Context/products-context";
 import { useEffect } from "react";
 import { useNavbar } from "./../../Context/navbar-context";
 import { useNavigate } from "react-router-dom";
+import { useToken } from "./../../Context/token-context";
 
 const Navbar = () => {
   let navigate = useNavigate();
 
-  const encodedToken = localStorage.getItem("ENCODED_TOKEN_2");
+  const { encodedToken } = useToken();
 
   const { navbarButtonText, setNavbarButtonText } = useNavbar();
 

@@ -11,12 +11,13 @@ import Box from "@mui/material/Box";
 import { useEffect, useState } from "react";
 import { useProducts } from "./../../Context/products-context";
 import { useNavigate } from "react-router-dom";
+import { useToken } from "./../../Context/token-context";
 
 const Movie = (props) => {
   let navigate = useNavigate();
   const { state, dispatch } = useProducts();
 
-  const encodedToken = localStorage.getItem("ENCODED_TOKEN_2");
+  const { encodedToken } = useToken();
 
   useEffect(() => {
     localStorage.setItem(

@@ -2,9 +2,10 @@ import Movie from "./../../Components/Movie/Movie";
 import "./liked.css";
 import { useProducts } from "./../../Context/products-context";
 import { useEffect } from "react";
+import { useToken } from "./../../Context/token-context";
 
 const Liked = () => {
-  const encodedToken = localStorage.getItem("ENCODED_TOKEN_2");
+  const { encodedToken } = useToken();
 
   const { state, dispatch } = useProducts();
 

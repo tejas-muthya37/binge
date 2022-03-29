@@ -3,9 +3,10 @@ import Movie from "./../../Components/Movie/Movie";
 import { useParams } from "react-router";
 import { useProducts } from "./../../Context/products-context";
 import { useEffect } from "react";
+import { useToken } from "./../../Context/token-context";
 
 const Playlist = () => {
-  const encodedToken = localStorage.getItem("ENCODED_TOKEN_2");
+  const { encodedToken } = useToken();
 
   const { playlistId } = useParams();
 
