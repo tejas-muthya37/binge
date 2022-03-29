@@ -1,12 +1,16 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 
 const TokenContext = createContext();
 
 const TokenProvider = ({ children }) => {
-  const encodedToken = localStorage.getItem("ENCODED_TOKEN_2");
+  var encodedTokenLocal = localStorage.getItem("ENCODED_TOKEN_2");
+
+  if (encodedTokenLocal !== null) encodedTokenLocal = "";
+
+  const [encodedToken, setEncodedToken] = useState(encodedTokenLocal);
 
   return (
-    <TokenContext.Provider value={{ encodedToken }}>
+    <TokenContext.Provider value={{ encodedToken, setEncodedToken }}>
       {children}
     </TokenContext.Provider>
   );

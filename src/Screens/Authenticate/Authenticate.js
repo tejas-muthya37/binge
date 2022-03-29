@@ -3,8 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { useRef } from "react";
 import { useToast } from "./../../Context/toast-context";
 import { useNavbar } from "./../../Context/navbar-context";
+import { useToken } from "./../../Context/token-context";
 
 function Authenticate(props) {
+  const { setEncodedToken } = useToken();
+
   let navigate = useNavigate();
 
   const { toggleToast, toastVisibility, toastColor, toastText } = useToast();
@@ -37,6 +40,7 @@ function Authenticate(props) {
             emailRef.current.value = "";
             passwordRef.current.value = "";
             localStorage.setItem("ENCODED_TOKEN_2", data.encodedToken);
+            setEncodedToken(data.encodedToken);
             setNavbarButtonText("SIGN OUT");
             navigate("/movies");
           } else {
@@ -75,6 +79,7 @@ function Authenticate(props) {
               emailRef.current.value = "";
               passwordRef.current.value = "";
               localStorage.setItem("ENCODED_TOKEN_2", data.encodedToken);
+              setEncodedToken(data.encodedToken);
               setNavbarButtonText("SIGN OUT");
               navigate("/movies");
             }

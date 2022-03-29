@@ -13,7 +13,7 @@ import { useToken } from "./../../Context/token-context";
 const Navbar = () => {
   let navigate = useNavigate();
 
-  const { encodedToken } = useToken();
+  const { encodedToken, setEncodedToken } = useToken();
 
   const { navbarButtonText, setNavbarButtonText } = useNavbar();
 
@@ -37,6 +37,7 @@ const Navbar = () => {
   const handleLogout = () => {
     if (navbarButtonText === "SIGN OUT") {
       localStorage.removeItem("ENCODED_TOKEN_2");
+      setEncodedToken("");
       localStorage.removeItem("LIKED_ARRAY");
       localStorage.removeItem("WATCH_LATER_ARRAY");
       localStorage.removeItem("HISTORY_ARRAY");
@@ -59,22 +60,22 @@ const Navbar = () => {
         <div className="nav-right">
           <ul className="ul-laptop-view">
             <li>
-              <Link to={encodedToken === null ? "/login" : "/liked"}>
+              <Link to={encodedToken === "" ? "/login" : "/liked"}>
                 <ThumbUpIcon />
               </Link>
             </li>
             <li>
-              <Link to={encodedToken === null ? "/login" : "/playlists"}>
+              <Link to={encodedToken === "" ? "/login" : "/playlists"}>
                 <SubscriptionsIcon />
               </Link>
             </li>
             <li>
-              <Link to={encodedToken === null ? "/login" : "/watch-later"}>
+              <Link to={encodedToken === "" ? "/login" : "/watch-later"}>
                 <WatchLaterIcon />
               </Link>
             </li>
             <li>
-              <Link to={encodedToken === null ? "/login" : "/history"}>
+              <Link to={encodedToken === "" ? "/login" : "/history"}>
                 <HistoryIcon />
               </Link>
             </li>
@@ -82,22 +83,22 @@ const Navbar = () => {
 
           <ul className="ul-mobile-view">
             <li>
-              <Link to={encodedToken === null ? "/login" : "/liked"}>
+              <Link to={encodedToken === "" ? "/login" : "/liked"}>
                 <ThumbUpIcon fontSize="small" />
               </Link>
             </li>
             <li>
-              <Link to={encodedToken === null ? "/login" : "/playlists"}>
+              <Link to={encodedToken === "" ? "/login" : "/playlists"}>
                 <SubscriptionsIcon fontSize="small" />
               </Link>
             </li>
             <li>
-              <Link to={encodedToken === null ? "/login" : "/watch-later"}>
+              <Link to={encodedToken === "" ? "/login" : "/watch-later"}>
                 <WatchLaterIcon fontSize="small" />
               </Link>
             </li>
             <li>
-              <Link to={encodedToken === null ? "/login" : "/history"}>
+              <Link to={encodedToken === "" ? "/login" : "/history"}>
                 <HistoryIcon fontSize="small" />
               </Link>
             </li>

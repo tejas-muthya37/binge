@@ -51,7 +51,7 @@ const Movie = (props) => {
     <div className="Movie">
       <div
         onClick={() => {
-          encodedToken === null ? navigate("/login") : props.addToHistory();
+          encodedToken === "" ? navigate("/login") : props.addToHistory();
         }}
       >
         <Player poster={props.thumbnail} src={props.source}>
@@ -64,14 +64,14 @@ const Movie = (props) => {
           <ThumbUpIcon
             style={{ color: props.likeButtonColor }}
             onClick={() => {
-              encodedToken === null ? navigate("/login") : props.addToLiked();
+              encodedToken === "" ? navigate("/login") : props.addToLiked();
             }}
             fontSize="small"
           />
           <ThumbDownIcon
             style={{ color: props.dislikeButtonColor }}
             onClick={() => {
-              encodedToken === null
+              encodedToken === ""
                 ? navigate("/login")
                 : props.removeFromLiked();
             }}
@@ -80,7 +80,7 @@ const Movie = (props) => {
           <WatchLaterIcon
             style={{ color: props.watchLaterButtonColor }}
             onClick={() => {
-              encodedToken === null
+              encodedToken === ""
                 ? navigate("/login")
                 : props.addToWatchLater();
             }}
@@ -95,7 +95,7 @@ const Movie = (props) => {
           {!props.playlistPage && !props.historyPage && (
             <PlaylistAddIcon
               onClick={() => {
-                if (encodedToken === null) navigate("/login");
+                if (encodedToken === "") navigate("/login");
                 else if (state.playlistsArray.length === 0)
                   navigate("/playlists");
                 else handleOpen();
