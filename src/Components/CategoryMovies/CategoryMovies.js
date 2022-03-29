@@ -42,8 +42,8 @@ const CategoryMovies = ({ category }) => {
           return (
             movie.category === category && (
               <Movie
-                key={movie.id}
-                id={movie.id}
+                key={movie._id}
+                _id={movie._id}
                 source={movie.source}
                 thumbnail={movie.thumbnail}
                 title={movie.title}

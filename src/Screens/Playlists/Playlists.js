@@ -80,6 +80,10 @@ const Playlists = () => {
                   id: state.playlistsArray.length + 1,
                   name: inputRef.current.value,
                   videos: [],
+                  mockBeePayload: {
+                    title: inputRef.current.value,
+                    description: "",
+                  },
                 },
               });
               handleClose();

@@ -8,10 +8,10 @@ const reducer = (state, action) => {
   switch (action.type) {
     case "Add to Liked":
       const likedVideoFound = state.likedArray.find(
-        (video) => video.id === action.payload.id
+        (video) => video._id === action.payload._id
       );
       if (likedVideoFound) {
-        fetch(`/api/user/likes/${action.payload.id}`, {
+        fetch(`/api/user/likes/${action.payload._id}`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
@@ -59,7 +59,7 @@ const reducer = (state, action) => {
           ),
         };
       }
-      fetch(`/api/user/likes/${action.payload.id}`, {
+      fetch(`/api/user/likes/${action.payload._id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -72,16 +72,16 @@ const reducer = (state, action) => {
       return {
         ...state,
         likedArray: state.likedArray.filter(
-          (movie) => movie.id !== action.payload.id
+          (movie) => movie._id !== action.payload._id
         ),
         dislikedArray: [...state.dislikedArray, action.payload],
       };
     case "Add to Watch Later":
       const watchLaterVideoFound = state.watchLaterArray.find(
-        (video) => video.id === action.payload.id
+        (video) => video._id === action.payload._id
       );
       if (watchLaterVideoFound) {
-        fetch(`/api/user/watchlater/${action.payload.id}`, {
+        fetch(`/api/user/watchlater/${action.payload._id}`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
@@ -94,7 +94,7 @@ const reducer = (state, action) => {
         return {
           ...state,
           watchLaterArray: state.watchLaterArray.filter(
-            (movie) => movie.id !== action.payload.id
+            (movie) => movie._id !== action.payload._id
           ),
         };
       } else {
@@ -117,8 +117,8 @@ const reducer = (state, action) => {
     case "Add to History":
       if (
         state.historyArray.length === 0 ||
-        state.historyArray[state.historyArray.length - 1].id !==
-          action.payload.id
+        state.historyArray[state.historyArray.length - 1]._id !==
+          action.payload._id
       ) {
         fetch("/api/user/history", {
           method: "POST",
@@ -139,7 +139,7 @@ const reducer = (state, action) => {
         return state;
       }
     case "Remove from History":
-      fetch(`/api/user/history/${action.payload.id}`, {
+      fetch(`/api/user/history/${action.payload._id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -152,7 +152,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         historyArray: state.historyArray.filter(
-          (movie) => movie.id !== action.payload.id
+          (movie) => movie._id !== action.payload._id
         ),
       };
     case "Clear History":
@@ -179,7 +179,7 @@ const reducer = (state, action) => {
           authorization: encodedToken,
         },
         body: JSON.stringify({
-          playlist: { title: action.payload.name, description: "" },
+          playlist: action.payload.mockBeePayload,
         }),
       })
         .then((res) => res.json())
@@ -189,6 +189,7 @@ const reducer = (state, action) => {
         playlistsArray: [...state.playlistsArray, action.payload],
       };
     case "Remove Playlist":
+      console.log(action.payload);
       fetch(`/api/user/playlists/${action.payload}`, {
         method: "DELETE",
         headers: {
@@ -209,7 +210,7 @@ const reducer = (state, action) => {
       state.playlistsArray.map((playlist) => {
         if (playlist.id === action.payload.playlistId) {
           const videoFound = playlist.videos.find(
-            (element) => element.id === action.payload.video.id
+            (element) => element._id === action.payload.video._id
           );
           if (action.payload.targetElement.checked) {
             if (!videoFound) {
@@ -228,7 +229,7 @@ const reducer = (state, action) => {
             }
           } else {
             fetch(
-              `/api/user/playlists/${action.payload.playlistId}/${action.payload.video.id}`,
+              `/api/user/playlists/${action.payload.playlistId}/${action.payload.video._id}`,
               {
                 method: "DELETE",
                 headers: {
@@ -241,7 +242,7 @@ const reducer = (state, action) => {
               .then((res) => res.json())
               .then((data) => console.log(data));
             playlist.videos = playlist.videos.filter(
-              (element) => element.id !== action.payload.video.id
+              (element) => element._id !== action.payload.video._id
             );
           }
         }

@@ -131,7 +131,7 @@ const Movie = (props) => {
                           payload: {
                             playlistId: playlist.id,
                             video: {
-                              id: props.id,
+                              _id: props._id,
                               thumbnail: props.thumbnail,
                               source: props.source,
                               title: props.title,
@@ -144,7 +144,7 @@ const Movie = (props) => {
                       type="checkbox"
                       defaultChecked={
                         playlist.videos.find(
-                          (element) => element.id === props.id
+                          (element) => element._id === props._id
                         )
                           ? true
                           : false
