@@ -13,10 +13,9 @@ const CategoryMovies = ({ category }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         dispatchVideo({ type: "Setup", payload: data.videos });
       });
-  }, []);
+  }, [dispatchVideo]);
 
   const { state, dispatch } = useProducts();
 

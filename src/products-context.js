@@ -228,7 +228,7 @@ const reducer = (state, action) => {
             }
           } else {
             fetch(
-              `/api/user/playlists/${action.payload.playlistId}/${action.payload.videoId}`,
+              `/api/user/playlists/${action.payload.playlistId}/${action.payload.video.id}`,
               {
                 method: "DELETE",
                 headers: {

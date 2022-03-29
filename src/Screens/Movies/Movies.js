@@ -1,18 +1,35 @@
 import "./movies.css";
 import CategoryMovies from "./../../Components/CategoryMovies/CategoryMovies";
 import { useParams } from "react-router-dom";
+import { useVideos } from "./../../videos-context";
+import { useEffect } from "react";
 
 const Movies = (props) => {
   const { categoryName } = useParams();
+  const { stateVideo, dispatchVideo } = useVideos();
+
+  useEffect(() => {
+    fetch("/api/categories", {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        dispatchVideo({ type: "Categories setup", payload: data.categories });
+      });
+  }, [dispatchVideo]);
 
   return (
     <div className="Movies">
       {props.categoryPage === false && (
         <div>
-          <CategoryMovies category="Thrillers" />
-          <CategoryMovies category="Action" />
-          <CategoryMovies category="Romance" />
-          <CategoryMovies category="Drama" />
+          {stateVideo.categoriesArray.map((category) => {
+            return (
+              <CategoryMovies
+                id={category.id}
+                category={category.categoryName}
+              />
+            );
+          })}
         </div>
       )}
 

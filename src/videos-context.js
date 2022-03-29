@@ -5,7 +5,6 @@ const VideosContext = createContext(null);
 const reducer = (stateVideo, action) => {
   switch (action.type) {
     case "Setup":
-      console.log("Setting up!");
       return {
         ...stateVideo,
         videosArray: action.payload,
