@@ -68,7 +68,7 @@ export const removePlaylistHandler = function (schema, request) {
   if (user) {
     const playlistId = request.params.playlistId;
     const filteredPlaylists = user.playlists.filter(
-      (item) => item._id !== playlistId
+      (item) => item.id !== Number(playlistId)
     );
     this.db.users.update({ playlists: filteredPlaylists });
     return new Response(200, {}, { playlists: filteredPlaylists });
