@@ -4,7 +4,22 @@ import { useProducts } from "./../../products-context";
 import { useEffect } from "react";
 
 const Liked = () => {
+  const encodedToken = localStorage.getItem("ENCODED_TOKEN_2");
+
   const { state, dispatch } = useProducts();
+
+  useEffect(() => {
+    fetch("/api/user/likes", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        authorization: encodedToken,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  }, [encodedToken]);
 
   useEffect(() => {
     localStorage.setItem("LIKED_ARRAY", JSON.stringify(state.likedArray));

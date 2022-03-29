@@ -6,6 +6,21 @@ import { useState, useRef, useEffect } from "react";
 import { useProducts } from "./../../products-context";
 
 const Playlists = () => {
+  const encodedToken = localStorage.getItem("ENCODED_TOKEN_2");
+
+  useEffect(() => {
+    fetch("/api/user/playlists", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        authorization: encodedToken,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  }, [encodedToken]);
+
   const inputRef = useRef(null);
 
   const { state, dispatch } = useProducts();

@@ -6,6 +6,21 @@ import { useEffect } from "react";
 const History = () => {
   const { state, dispatch } = useProducts();
 
+  const encodedToken = localStorage.getItem("ENCODED_TOKEN_2");
+
+  useEffect(() => {
+    fetch("/api/user/history", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        authorization: encodedToken,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  }, [encodedToken]);
+
   useEffect(() => {
     localStorage.setItem("LIKED_ARRAY", JSON.stringify(state.likedArray));
     localStorage.setItem(

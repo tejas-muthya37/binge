@@ -6,6 +6,8 @@ import { useEffect } from "react";
 const WatchLater = () => {
   const { state, dispatch } = useProducts();
 
+  const encodedToken = localStorage.getItem("ENCODED_TOKEN_2");
+
   useEffect(() => {
     localStorage.setItem("LIKED_ARRAY", JSON.stringify(state.likedArray));
     localStorage.setItem(
@@ -20,6 +22,19 @@ const WatchLater = () => {
     state.historyArray,
     state.dislikedArray,
   ]);
+
+  useEffect(() => {
+    fetch("/api/user/watchlater", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        authorization: encodedToken,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  }, [encodedToken]);
 
   return (
     <div className="WatchLater">

@@ -5,6 +5,8 @@ import { useProducts } from "./../../products-context";
 import { useEffect } from "react";
 
 const Playlist = () => {
+  const encodedToken = localStorage.getItem("ENCODED_TOKEN_2");
+
   const { playlistId } = useParams();
 
   const { state, dispatch } = useProducts();
@@ -12,6 +14,19 @@ const Playlist = () => {
   const playlist = state.playlistsArray.find(
     (playlist) => playlist.id === Number(playlistId)
   );
+
+  useEffect(() => {
+    fetch(`/api/user/playlists/${playlistId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        authorization: encodedToken,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  }, [encodedToken, playlistId]);
 
   useEffect(() => {
     localStorage.setItem(
