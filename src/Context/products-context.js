@@ -20,7 +20,8 @@ const reducer = (state, action) => {
           },
         })
           .then((res) => res.json())
-          .then((data) => console.log(data));
+          .then((data) => console.log(data))
+          .catch((err) => console.log(err));
         return {
           ...state,
           likedArray: state.likedArray.filter(
@@ -38,7 +39,8 @@ const reducer = (state, action) => {
           body: JSON.stringify({ video: action.payload }),
         })
           .then((res) => res.json())
-          .then((data) => console.log(data));
+          .then((data) => console.log(data))
+          .catch((err) => console.log(err));
         return {
           ...state,
           likedArray: [...state.likedArray, action.payload],
@@ -68,7 +70,8 @@ const reducer = (state, action) => {
         },
       })
         .then((res) => res.json())
-        .then((data) => console.log(data));
+        .then((data) => console.log(data))
+        .catch((err) => console.log(err));
       return {
         ...state,
         likedArray: state.likedArray.filter(
@@ -90,7 +93,8 @@ const reducer = (state, action) => {
           },
         })
           .then((res) => res.json())
-          .then((data) => console.log(data));
+          .then((data) => console.log(data))
+          .catch((err) => console.log(err));
         return {
           ...state,
           watchLaterArray: state.watchLaterArray.filter(
@@ -108,7 +112,8 @@ const reducer = (state, action) => {
           body: JSON.stringify({ video: action.payload }),
         })
           .then((res) => res.json())
-          .then((data) => console.log(data));
+          .then((data) => console.log(data))
+          .catch((err) => console.log(err));
         return {
           ...state,
           watchLaterArray: [...state.watchLaterArray, action.payload],
@@ -130,7 +135,8 @@ const reducer = (state, action) => {
           body: JSON.stringify({ video: action.payload }),
         })
           .then((res) => res.json())
-          .then((data) => console.log(data));
+          .then((data) => console.log(data))
+          .catch((err) => console.log(err));
         return {
           ...state,
           historyArray: [...state.historyArray, action.payload],
@@ -148,7 +154,8 @@ const reducer = (state, action) => {
         },
       })
         .then((res) => res.json())
-        .then((data) => console.log(data));
+        .then((data) => console.log(data))
+        .catch((err) => console.log(err));
       return {
         ...state,
         historyArray: state.historyArray.filter(
@@ -165,7 +172,8 @@ const reducer = (state, action) => {
         },
       })
         .then((res) => res.json())
-        .then((data) => console.log(data));
+        .then((data) => console.log(data))
+        .catch((err) => console.log(err));
       return {
         ...state,
         historyArray: [],
@@ -183,7 +191,8 @@ const reducer = (state, action) => {
         }),
       })
         .then((res) => res.json())
-        .then((data) => console.log(data));
+        .then((data) => console.log(data))
+        .catch((err) => console.log(err));
       return {
         ...state,
         playlistsArray: [...state.playlistsArray, action.payload],
@@ -199,7 +208,8 @@ const reducer = (state, action) => {
         },
       })
         .then((res) => res.json())
-        .then((data) => console.log(data));
+        .then((data) => console.log(data))
+        .catch((err) => console.log(err));
       return {
         ...state,
         playlistsArray: state.playlistsArray.filter(
@@ -225,7 +235,8 @@ const reducer = (state, action) => {
                 body: JSON.stringify({ video: action.payload.video }),
               })
                 .then((res) => res.json())
-                .then((data) => console.log(data));
+                .then((data) => console.log(data))
+                .catch((err) => console.log(err));
             }
           } else {
             fetch(
@@ -240,7 +251,8 @@ const reducer = (state, action) => {
               }
             )
               .then((res) => res.json())
-              .then((data) => console.log(data));
+              .then((data) => console.log(data))
+              .catch((err) => console.log(err));
             playlist.videos = playlist.videos.filter(
               (element) => element._id !== action.payload.video._id
             );
@@ -267,7 +279,8 @@ const reducer = (state, action) => {
             }
           )
             .then((res) => res.json())
-            .then((data) => console.log(data));
+            .then((data) => console.log(data))
+            .catch((err) => console.log(err));
           playlist.videos = playlist.videos.filter(
             (video) => video.id !== action.payload.videoId
           );
