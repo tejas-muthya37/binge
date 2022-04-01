@@ -5,7 +5,6 @@ import HistoryIcon from "@mui/icons-material/History";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import { Link } from "react-router-dom";
 import { useProducts } from "./../../Context/products-context";
-import { useEffect } from "react";
 import { useNavbar } from "./../../Context/navbar-context";
 import { useNavigate } from "react-router-dom";
 import { useToken } from "./../../Context/token-context";
@@ -15,9 +14,9 @@ const Navbar = () => {
 
   const { encodedToken, setEncodedToken } = useToken();
 
-  const { navbarButtonText, setNavbarButtonText } = useNavbar();
+  const { setNavbarButtonText } = useNavbar();
 
-  const { state, dispatch } = useProducts();
+  const { dispatch } = useProducts();
 
   const handleLogout = () => {
     if (encodedToken !== null && encodedToken !== "") {

@@ -153,7 +153,7 @@ const addToPlaylistPostRequest = (passedPayload) => {
 
 const removeFromPlaylistDeleteRequest = (passedPayload) => {
   fetch(
-    `/api/user/playlists/${passedPayload.playlistId}/${passedPayload.videoId}`,
+    `/api/user/playlists/${passedPayload.playlistId}/${passedPayload.video._id}`,
     {
       method: "DELETE",
       headers: {

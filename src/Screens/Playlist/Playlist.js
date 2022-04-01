@@ -90,7 +90,7 @@ const Playlist = () => {
                           type: "Remove from Playlist",
                           payload: {
                             playlistId: playlist.id,
-                            videoId: movie.id,
+                            video: movie,
                           },
                         })
                       }
