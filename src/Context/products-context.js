@@ -2,26 +2,191 @@ import { useReducer, useContext, createContext } from "react";
 
 const ProductsContext = createContext(null);
 
-const reducer = (state, action) => {
-  const encodedToken = localStorage.getItem("ENCODED_TOKEN_2");
+const encodedToken = localStorage.getItem("ENCODED_TOKEN_2");
 
+const addToLikedPostRequest = (passedPayload) => {
+  fetch("/api/user/likes", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      authorization: encodedToken,
+    },
+    body: JSON.stringify({ video: passedPayload }),
+  })
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err));
+};
+
+const removeFromLikedDeleteRequest = (passedPayload) => {
+  fetch(`/api/user/likes/${passedPayload._id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      authorization: encodedToken,
+    },
+  })
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err));
+};
+
+const addToWatchLaterPostRequest = (passedPayload) => {
+  fetch("/api/user/watchlater", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      authorization: encodedToken,
+    },
+    body: JSON.stringify({ video: passedPayload }),
+  })
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err));
+};
+
+const removeFromWatchLaterDeleteRequest = (passedPayload) => {
+  fetch(`/api/user/watchlater/${passedPayload._id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      authorization: encodedToken,
+    },
+  })
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err));
+};
+
+const addToHistoryPostRequest = (passedPayload) => {
+  fetch("/api/user/history", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      authorization: encodedToken,
+    },
+    body: JSON.stringify({ video: passedPayload }),
+  })
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err));
+};
+
+const removeFromHistoryDeleteRequest = (passedPayload) => {
+  fetch(`/api/user/history/${passedPayload._id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      authorization: encodedToken,
+    },
+  })
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err));
+};
+
+const clearHistoryDeleteRequest = () => {
+  fetch("/api/user/history/all", {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      authorization: encodedToken,
+    },
+  })
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err));
+};
+
+const addPlaylistPostRequest = (passedPayload) => {
+  fetch("/api/user/playlists", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      authorization: encodedToken,
+    },
+    body: JSON.stringify({
+      playlist: passedPayload.mockBeePayload,
+    }),
+  })
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err));
+};
+
+const removePlaylistDeleteRequest = (passedPayload) => {
+  fetch(`/api/user/playlists/${passedPayload}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      authorization: encodedToken,
+    },
+  })
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err));
+};
+
+const addToPlaylistPostRequest = (passedPayload) => {
+  fetch(`/api/user/playlists/${passedPayload.playlistId}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      authorization: encodedToken,
+    },
+    body: JSON.stringify({ video: passedPayload.video }),
+  })
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err));
+};
+
+const removeFromPlaylistDeleteRequest = (passedPayload) => {
+  fetch(
+    `/api/user/playlists/${passedPayload.playlistId}/${passedPayload.videoId}`,
+    {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        authorization: encodedToken,
+      },
+    }
+  )
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err));
+};
+
+const reducer = (state, action) => {
   switch (action.type) {
     case "Add to Liked":
       const likedVideoFound = state.likedArray.find(
         (video) => video._id === action.payload._id
       );
       if (likedVideoFound) {
-        fetch(`/api/user/likes/${action.payload._id}`, {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-            authorization: encodedToken,
-          },
-        })
-          .then((res) => res.json())
-          .then((data) => console.log(data))
-          .catch((err) => console.log(err));
+        // fetch(`/api/user/likes/${action.payload._id}`, {
+        //   method: "DELETE",
+        //   headers: {
+        //     "Content-Type": "application/json",
+        //     Accept: "application/json",
+        //     authorization: encodedToken,
+        //   },
+        // })
+        //   .then((res) => res.json())
+        //   .then((data) => console.log(data))
+        //   .catch((err) => console.log(err));
+        removeFromLikedDeleteRequest(action.payload);
         return {
           ...state,
           likedArray: state.likedArray.filter(
@@ -29,18 +194,19 @@ const reducer = (state, action) => {
           ),
         };
       } else {
-        fetch("/api/user/likes", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-            authorization: encodedToken,
-          },
-          body: JSON.stringify({ video: action.payload }),
-        })
-          .then((res) => res.json())
-          .then((data) => console.log(data))
-          .catch((err) => console.log(err));
+        // fetch("/api/user/likes", {
+        //   method: "POST",
+        //   headers: {
+        //     "Content-Type": "application/json",
+        //     Accept: "application/json",
+        //     authorization: encodedToken,
+        //   },
+        //   body: JSON.stringify({ video: action.payload }),
+        // })
+        //   .then((res) => res.json())
+        //   .then((data) => console.log(data))
+        //   .catch((err) => console.log(err));
+        addToLikedPostRequest(action.payload);
         return {
           ...state,
           likedArray: [...state.likedArray, action.payload],
@@ -61,17 +227,18 @@ const reducer = (state, action) => {
           ),
         };
       }
-      fetch(`/api/user/likes/${action.payload._id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          authorization: encodedToken,
-        },
-      })
-        .then((res) => res.json())
-        .then((data) => console.log(data))
-        .catch((err) => console.log(err));
+      // fetch(`/api/user/likes/${action.payload._id}`, {
+      //   method: "DELETE",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //     Accept: "application/json",
+      //     authorization: encodedToken,
+      //   },
+      // })
+      //   .then((res) => res.json())
+      //   .then((data) => console.log(data))
+      //   .catch((err) => console.log(err));
+      removeFromLikedDeleteRequest(action.payload);
       return {
         ...state,
         likedArray: state.likedArray.filter(
@@ -84,17 +251,18 @@ const reducer = (state, action) => {
         (video) => video._id === action.payload._id
       );
       if (watchLaterVideoFound) {
-        fetch(`/api/user/watchlater/${action.payload._id}`, {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-            authorization: encodedToken,
-          },
-        })
-          .then((res) => res.json())
-          .then((data) => console.log(data))
-          .catch((err) => console.log(err));
+        // fetch(`/api/user/watchlater/${action.payload._id}`, {
+        //   method: "DELETE",
+        //   headers: {
+        //     "Content-Type": "application/json",
+        //     Accept: "application/json",
+        //     authorization: encodedToken,
+        //   },
+        // })
+        //   .then((res) => res.json())
+        //   .then((data) => console.log(data))
+        //   .catch((err) => console.log(err));
+        removeFromWatchLaterDeleteRequest(action.payload);
         return {
           ...state,
           watchLaterArray: state.watchLaterArray.filter(
@@ -102,18 +270,19 @@ const reducer = (state, action) => {
           ),
         };
       } else {
-        fetch("/api/user/watchlater", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-            authorization: encodedToken,
-          },
-          body: JSON.stringify({ video: action.payload }),
-        })
-          .then((res) => res.json())
-          .then((data) => console.log(data))
-          .catch((err) => console.log(err));
+        // fetch("/api/user/watchlater", {
+        //   method: "POST",
+        //   headers: {
+        //     "Content-Type": "application/json",
+        //     Accept: "application/json",
+        //     authorization: encodedToken,
+        //   },
+        //   body: JSON.stringify({ video: action.payload }),
+        // })
+        //   .then((res) => res.json())
+        //   .then((data) => console.log(data))
+        //   .catch((err) => console.log(err));
+        addToWatchLaterPostRequest(action.payload);
         return {
           ...state,
           watchLaterArray: [...state.watchLaterArray, action.payload],
@@ -125,18 +294,19 @@ const reducer = (state, action) => {
         state.historyArray[state.historyArray.length - 1]._id !==
           action.payload._id
       ) {
-        fetch("/api/user/history", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-            authorization: encodedToken,
-          },
-          body: JSON.stringify({ video: action.payload }),
-        })
-          .then((res) => res.json())
-          .then((data) => console.log(data))
-          .catch((err) => console.log(err));
+        // fetch("/api/user/history", {
+        //   method: "POST",
+        //   headers: {
+        //     "Content-Type": "application/json",
+        //     Accept: "application/json",
+        //     authorization: encodedToken,
+        //   },
+        //   body: JSON.stringify({ video: action.payload }),
+        // })
+        //   .then((res) => res.json())
+        //   .then((data) => console.log(data))
+        //   .catch((err) => console.log(err));
+        addToHistoryPostRequest(action.payload);
         return {
           ...state,
           historyArray: [...state.historyArray, action.payload],
@@ -145,17 +315,18 @@ const reducer = (state, action) => {
         return state;
       }
     case "Remove from History":
-      fetch(`/api/user/history/${action.payload._id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          authorization: encodedToken,
-        },
-      })
-        .then((res) => res.json())
-        .then((data) => console.log(data))
-        .catch((err) => console.log(err));
+      // fetch(`/api/user/history/${action.payload._id}`, {
+      //   method: "DELETE",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //     Accept: "application/json",
+      //     authorization: encodedToken,
+      //   },
+      // })
+      //   .then((res) => res.json())
+      //   .then((data) => console.log(data))
+      //   .catch((err) => console.log(err));
+      removeFromHistoryDeleteRequest(action.payload);
       return {
         ...state,
         historyArray: state.historyArray.filter(
@@ -163,53 +334,56 @@ const reducer = (state, action) => {
         ),
       };
     case "Clear History":
-      fetch("/api/user/history/all", {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          authorization: encodedToken,
-        },
-      })
-        .then((res) => res.json())
-        .then((data) => console.log(data))
-        .catch((err) => console.log(err));
+      // fetch("/api/user/history/all", {
+      //   method: "DELETE",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //     Accept: "application/json",
+      //     authorization: encodedToken,
+      //   },
+      // })
+      //   .then((res) => res.json())
+      //   .then((data) => console.log(data))
+      //   .catch((err) => console.log(err));
+      clearHistoryDeleteRequest();
       return {
         ...state,
         historyArray: [],
       };
     case "Add Playlist":
-      fetch("/api/user/playlists", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          authorization: encodedToken,
-        },
-        body: JSON.stringify({
-          playlist: action.payload.mockBeePayload,
-        }),
-      })
-        .then((res) => res.json())
-        .then((data) => console.log(data))
-        .catch((err) => console.log(err));
+      // fetch("/api/user/playlists", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //     Accept: "application/json",
+      //     authorization: encodedToken,
+      //   },
+      //   body: JSON.stringify({
+      //     playlist: action.payload.mockBeePayload,
+      //   }),
+      // })
+      //   .then((res) => res.json())
+      //   .then((data) => console.log(data))
+      //   .catch((err) => console.log(err));
+      addPlaylistPostRequest(action.payload);
       return {
         ...state,
         playlistsArray: [...state.playlistsArray, action.payload],
       };
     case "Remove Playlist":
       console.log(action.payload);
-      fetch(`/api/user/playlists/${action.payload}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          authorization: encodedToken,
-        },
-      })
-        .then((res) => res.json())
-        .then((data) => console.log(data))
-        .catch((err) => console.log(err));
+      // fetch(`/api/user/playlists/${action.payload}`, {
+      //   method: "DELETE",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //     Accept: "application/json",
+      //     authorization: encodedToken,
+      //   },
+      // })
+      //   .then((res) => res.json())
+      //   .then((data) => console.log(data))
+      //   .catch((err) => console.log(err));
+      removePlaylistDeleteRequest(action.payload);
       return {
         ...state,
         playlistsArray: state.playlistsArray.filter(
@@ -225,34 +399,36 @@ const reducer = (state, action) => {
           if (action.payload.targetElement.checked) {
             if (!videoFound) {
               playlist.videos = [...playlist.videos, action.payload.video];
-              fetch(`/api/user/playlists/${action.payload.playlistId}`, {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                  Accept: "application/json",
-                  authorization: encodedToken,
-                },
-                body: JSON.stringify({ video: action.payload.video }),
-              })
-                .then((res) => res.json())
-                .then((data) => console.log(data))
-                .catch((err) => console.log(err));
+              // fetch(`/api/user/playlists/${action.payload.playlistId}`, {
+              //   method: "POST",
+              //   headers: {
+              //     "Content-Type": "application/json",
+              //     Accept: "application/json",
+              //     authorization: encodedToken,
+              //   },
+              //   body: JSON.stringify({ video: action.payload.video }),
+              // })
+              //   .then((res) => res.json())
+              //   .then((data) => console.log(data))
+              //   .catch((err) => console.log(err));
+              addToPlaylistPostRequest(action.payload);
             }
           } else {
-            fetch(
-              `/api/user/playlists/${action.payload.playlistId}/${action.payload.video._id}`,
-              {
-                method: "DELETE",
-                headers: {
-                  "Content-Type": "application/json",
-                  Accept: "application/json",
-                  authorization: encodedToken,
-                },
-              }
-            )
-              .then((res) => res.json())
-              .then((data) => console.log(data))
-              .catch((err) => console.log(err));
+            // fetch(
+            //   `/api/user/playlists/${action.payload.playlistId}/${action.payload.video._id}`,
+            //   {
+            //     method: "DELETE",
+            //     headers: {
+            //       "Content-Type": "application/json",
+            //       Accept: "application/json",
+            //       authorization: encodedToken,
+            //     },
+            //   }
+            // )
+            //   .then((res) => res.json())
+            //   .then((data) => console.log(data))
+            //   .catch((err) => console.log(err));
+            removeFromPlaylistDeleteRequest(action.payload);
             playlist.videos = playlist.videos.filter(
               (element) => element._id !== action.payload.video._id
             );
@@ -267,20 +443,21 @@ const reducer = (state, action) => {
     case "Remove from Playlist":
       state.playlistsArray.map((playlist) => {
         if (playlist.id === action.payload.playlistId) {
-          fetch(
-            `/api/user/playlists/${action.payload.playlistId}/${action.payload.videoId}`,
-            {
-              method: "DELETE",
-              headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-                authorization: encodedToken,
-              },
-            }
-          )
-            .then((res) => res.json())
-            .then((data) => console.log(data))
-            .catch((err) => console.log(err));
+          // fetch(
+          //   `/api/user/playlists/${action.payload.playlistId}/${action.payload.videoId}`,
+          //   {
+          //     method: "DELETE",
+          //     headers: {
+          //       "Content-Type": "application/json",
+          //       Accept: "application/json",
+          //       authorization: encodedToken,
+          //     },
+          //   }
+          // )
+          //   .then((res) => res.json())
+          //   .then((data) => console.log(data))
+          //   .catch((err) => console.log(err));
+          removeFromPlaylistDeleteRequest(action.payload);
           playlist.videos = playlist.videos.filter(
             (video) => video.id !== action.payload.videoId
           );

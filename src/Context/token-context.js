@@ -5,7 +5,7 @@ const TokenContext = createContext();
 const TokenProvider = ({ children }) => {
   var encodedTokenLocal = localStorage.getItem("ENCODED_TOKEN_2");
 
-  if (encodedTokenLocal !== null) encodedTokenLocal = "";
+  if (encodedTokenLocal === null) encodedTokenLocal = "";
 
   const [encodedToken, setEncodedToken] = useState(encodedTokenLocal);
 
